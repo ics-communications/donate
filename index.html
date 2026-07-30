@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate | Institute for Christian Studies</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   RESET & VARIABLES
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --wine:        #9B0D24;
+  --wine-deep:   #7A0A1C;
+  --wine-mid:    #BE0B28;
+  --wine-soft:   #D44B5E;
+
+  --accent:       #A85A32;
+  --accent-light: #C87A52;
+  --accent-muted: #8E4A28;
+  --accent-pale:  #EEDACA;
+  --accent-deep:  #7A4020;
+
+  --teal:         #7A5C3A;
+  --teal-light:   #A07A4E;
+  --teal-muted:   #6B4E30;
+  --teal-pale:    #E6D9C6;
+  --teal-deep:    #5A4228;
+
+  --cream:       #FDFBF7;
+  --cream-warm:  #F9F5ED;
+  --parchment:   #F0E9DD;
+  --text-dark:   #2E1318;
+  --text-body:   #3A3330;
+  --text-muted:  #857E78;
+  --text-on-dark:#E8C2C2;
+  --border-light:rgba(155,13,36,0.08);
+
+  --serif: 'Libre Baskerville', Georgia, serif;
+  --sans:  'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ease:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html { scroll-behavior: smooth; font-size: 110%; }
+body {
+  font-family: var(--sans); color: var(--text-body); background: var(--cream);
+  line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── SHARED ── */
+.eyebrow { font-family: var(--sans); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-muted); }
+.section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--wine); line-height: 1.2; }
+.btn { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1.6rem; border: none; cursor: pointer; transition: all 0.35s var(--ease); min-height: 44px; }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168,90,50,0.3); }
+.btn-arrow::after { content: '\2192'; transition: transform 0.3s ease; display: inline-block; }
+.btn-arrow:hover::after { transform: translateX(3px); }
+.accent-rule { height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 50%, transparent); }
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 42vh; display: flex; align-items: center; background: var(--wine-deep); overflow: hidden; padding: 5rem 0 4rem; }
+.hero__bg { position: absolute; inset: 0; }
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.25) brightness(0.7); }
+.hero__overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 90%, rgba(168,90,50,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(168,90,50,0.05) 0%, transparent 45%), linear-gradient(160deg, rgba(122,10,28,0.94) 0%, rgba(122,10,28,0.78) 100%); }
+.hero__accent-rule { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 40%, transparent 80%); z-index: 10; }
+.hero__content { position: relative; z-index: 5; width: 100%; }
+.hero__inner { max-width: 700px; }
+.hero__back { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.25s var(--ease); min-height: 44px; }
+.hero__back::before { content: '\2190'; font-size: 0.95rem; line-height: 1; transition: transform 0.3s ease; display: inline-block; }
+.hero__back:hover { color: var(--cream); }
+.hero__back:hover::before { transform: translateX(-3px); }
+.hero__eyebrow { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--accent-light); letter-spacing: 0.06em; margin-bottom: 0.75rem; opacity: 0.9; }
+.hero__title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; color: var(--cream); line-height: 1.12; margin-bottom: 1.1rem; }
+.hero__title em { font-style: italic; color: var(--accent-light); }
+.hero__subtitle { font-family: var(--sans); font-size: 1.02rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.75; max-width: 560px; }
+
+/* ── DONATE INTRO ── */
+.donate-intro { padding: 4rem 0 3rem; }
+.donate-intro__inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.donate-intro__body { font-size: 0.95rem; color: var(--text-body); line-height: 1.75; margin-top: 1rem; }
+.donate-intro__body a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.donate-intro__body a:hover { color: var(--accent); }
+
+/* ── DONATION CARDS ── */
+.donate-grid { padding: 0 0 5rem; }
+.donate-grid__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.donate-card { background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); padding: 2.5rem 2rem 2rem; display: flex; flex-direction: column; transition: all 0.4s var(--ease); }
+.donate-card:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(155,13,36,0.07); }
+.donate-card--teal { border-top-color: var(--teal); }
+.donate-card--teal:hover { border-top-color: var(--teal-deep); }
+.donate-card__eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-muted); margin-bottom: 0.5rem; }
+.donate-card--teal .donate-card__eyebrow { color: var(--teal-muted); }
+.donate-card__title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--wine); line-height: 1.25; margin-bottom: 0.8rem; }
+.donate-card__desc { font-size: 0.9rem; color: var(--text-body); line-height: 1.65; margin-bottom: 1.5rem; flex-grow: 1; }
+.donate-card__desc a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.donate-card__desc a:hover { color: var(--accent); }
+.donate-card__btn-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.donate-card__divider { height: 1px; background: var(--border-light); margin: 0 0 1.2rem; }
+.donate-card__alt-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem; }
+.donate-card__address { font-size: 0.88rem; color: var(--text-body); line-height: 1.6; font-style: normal; }
+.donate-card__address strong { font-weight: 600; color: var(--text-dark); }
+
+/* ── CUSTOM DONATE FORM ── */
+.donate-form-section { padding: 0 0 5rem; }
+.donate-form { max-width: 600px; margin: 0 auto; background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--wine); overflow: hidden; }
+.donate-form__header { background: var(--wine-deep); padding: 2rem 2rem 1.8rem; text-align: center; position: relative; overflow: hidden; }
+.donate-form__header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(168,90,50,0.08) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(168,90,50,0.05) 0%, transparent 50%); pointer-events: none; }
+.donate-form__header-content { position: relative; }
+.donate-form__header-eyebrow { font-family: var(--sans); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.4rem; }
+.donate-form__header-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--cream); line-height: 1.25; margin-bottom: 0.3rem; }
+.donate-form__header-sub { font-size: 0.78rem; color: var(--text-on-dark); font-weight: 300; }
+.donate-form__body { padding: 2rem; }
+
+.donate-form__freq { display: flex; border: 1.5px solid var(--border-light); overflow: hidden; margin-bottom: 1.8rem; background: #fff; }
+.donate-form__freq-btn { flex: 1; padding: 0.7rem 1rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-align: center; background: #fff; color: var(--text-muted); border: none; cursor: pointer; transition: all 0.25s var(--ease); min-height: 44px; }
+.donate-form__freq-btn:not(:last-child) { border-right: 1.5px solid var(--border-light); }
+.donate-form__freq-btn.active { background: var(--wine); color: #fff; }
+.donate-form__freq-btn:not(.active):hover { background: rgba(155,13,36,0.04); color: var(--wine); }
+
+.donate-form__label { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.65rem; display: block; }
+.donate-form__amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 1rem; }
+.donate-form__amt { padding: 0.85rem 0.5rem; font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--wine); background: #fff; border: 1.5px solid var(--border-light); cursor: pointer; transition: all 0.2s var(--ease); text-align: center; min-height: 44px; }
+.donate-form__amt:hover { border-color: var(--wine-soft); background: rgba(155,13,36,0.03); }
+.donate-form__amt.active { border-color: var(--wine); background: var(--wine); color: #fff; box-shadow: 0 3px 12px rgba(155,13,36,0.15); }
+
+.donate-form__custom-wrap { position: relative; margin-bottom: 1.8rem; }
+.donate-form__custom-symbol { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--text-muted); pointer-events: none; }
+.donate-form__custom { width: 100%; padding: 0.85rem 0.9rem 0.85rem 1.8rem; font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--wine); border: 1.5px solid var(--border-light); background: #fff; outline: none; transition: border-color 0.2s ease; min-height: 44px; }
+.donate-form__custom::placeholder { font-family: var(--sans); font-weight: 400; font-size: 0.85rem; color: var(--text-muted); }
+.donate-form__custom:focus { border-color: var(--wine); }
+
+.donate-form__submit { width: 100%; padding: 1rem; font-family: var(--sans); font-size: 0.92rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--accent); border: none; cursor: pointer; transition: all 0.35s var(--ease); min-height: 52px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.donate-form__submit:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(168,90,50,0.3); }
+.donate-form__submit:active { transform: scale(0.98); }
+.donate-form__submit svg { flex-shrink: 0; }
+
+.donate-form__footer { padding: 0.8rem 2rem; text-align: center; border-top: 1px solid var(--border-light); background: rgba(155,13,36,0.02); }
+.donate-form__secure { font-size: 0.68rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.donate-form__secure svg { width: 12px; height: 12px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.donate-form__secure a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.donate-form__secure a:hover { color: var(--accent); }
+
+/* ── CONTACT BANNER ── */
+.contact-banner { position: relative; padding: 3.5rem 0; background: var(--wine); overflow: hidden; }
+.contact-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(168,90,50,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(168,90,50,0.04) 0%, transparent 60%); pointer-events: none; }
+.contact-banner__content { position: relative; text-align: center; max-width: 640px; margin: 0 auto; }
+.contact-banner__eyebrow { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.8rem; }
+.contact-banner__title { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700; color: var(--cream); line-height: 1.35; margin-bottom: 1rem; }
+.contact-banner__body { font-size: 0.92rem; color: var(--text-on-dark); line-height: 1.7; margin-bottom: 1.5rem; }
+.contact-banner__details { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.contact-banner__item { display: flex; align-items: center; gap: 0.6rem; }
+.contact-banner__icon { width: 36px; height: 36px; background: rgba(168,90,50,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-light); }
+.contact-banner__icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact-banner__label { font-size: 0.82rem; color: var(--cream); font-weight: 500; }
+.contact-banner__label a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 2px; }
+.contact-banner__label a:hover { color: #fff; }
+
+/* ── FOOTER ── */
+.site-footer { background: var(--wine-deep); padding: 3.5rem 0 2rem; color: var(--text-on-dark); border-top: 1px solid rgba(168,90,50,0.12); }
+.footer__grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+.footer__brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--cream); margin-bottom: 0.75rem; }
+.footer__desc { font-size: 0.82rem; line-height: 1.7; margin-bottom: 1.2rem; max-width: 280px; }
+.footer__address { font-size: 0.82rem; line-height: 1.7; font-style: normal; }
+.footer__heading { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1.2rem; }
+.footer__links { list-style: none; }
+.footer__links li { margin-bottom: 0.6rem; }
+.footer__links a { font-size: 0.85rem; color: var(--text-on-dark); transition: color 0.2s ease; display: inline-block; padding: 0.15rem 0; }
+.footer__links a:hover { color: var(--accent-light); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(212,172,172,0.5); }
+.footer__social { display: flex; gap: 0.6rem; }
+.footer__social a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--text-on-dark); transition: all 0.2s ease; }
+.footer__social a:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.footer__social .social-substack { font-size: 0.6rem; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ── ANIMATION ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) { .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 768px) {
+  html { font-size: 100%; }
+  .container { padding: 0 1.25rem; }
+  .hero { min-height: auto; padding: 2.5rem 0 2rem; }
+  .hero__title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .hero__subtitle { font-size: 0.92rem; }
+  .donate-intro { padding: 3rem 0 2rem; }
+  .donate-grid__inner { grid-template-columns: 1fr; }
+  .donate-card { padding: 2rem 1.4rem 1.6rem; }
+  .donate-form-section { padding: 0 0 3.5rem; }
+  .donate-form__body { padding: 1.5rem; }
+  .donate-form__header { padding: 1.5rem; }
+  .donate-form__amounts { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .donate-form__footer { padding: 0.8rem 1.5rem; }
+  .contact-banner { padding: 2.5rem 0; }
+  .contact-banner__details { flex-direction: column; align-items: center; }
+  .site-footer { padding: 2.5rem 0 1.5rem; }
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer__desc { max-width: 100%; }
+  .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer__social { justify-content: center; }
+  .footer__social a { width: 40px; height: 40px; }
+}
+@media (max-width: 480px) {
+  html { font-size: 95%; }
+  .container { padding: 0 1rem; }
+  .hero { padding: 2rem 0 1.8rem; }
+  .hero__title { font-size: 1.6rem; }
+  .hero__subtitle { font-size: 0.86rem; }
+  .donate-card__title { font-size: 1.15rem; }
+  .donate-form__amounts { grid-template-columns: repeat(2, 1fr); }
+  .donate-form__body { padding: 1.2rem; }
+  .donate-form__header { padding: 1.3rem; }
+  .donate-form__header-title { font-size: 1.15rem; }
+}
+@media (max-width: 360px) { html { font-size: 90%; } .container { padding: 0 0.85rem; } .hero__title { font-size: 1.4rem; } }
+@media (hover: none) { .donate-card:hover { transform: none; box-shadow: none; } .btn:active, .donate-form__submit:active, .donate-form__amt:active { transform: scale(0.97); opacity: 0.9; } }
+@supports (padding: env(safe-area-inset-bottom)) { .site-footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); } .hero { padding-top: calc(5rem + env(safe-area-inset-top)); } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .btn, .donate-card, .donate-form__submit, .donate-form__amt, .donate-form__freq-btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__accent-rule"></div>
+  <div class="hero__bg">
+    <img src="https://lightroom.adobe.com/v2c/spaces/8e293c41299846de9eaf08c99ce6ee2a/assets/c894c885b11a4e62ad982942828ba563/revisions/cd8348305bf6440182d33dbe01330cf3/renditions/c7bfa0ca27623d934f0bc96a918fb607" alt="Community gathering">
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content container">
+    <div class="hero__inner">
+      <a href="https://icscanada.edu" class="hero__back">Back to ICS Home</a>
+      <p class="hero__eyebrow">Institute for Christian Studies</p>
+      <h1 class="hero__title">Support a <em>Spacious Faith</em></h1>
+      <p class="hero__subtitle">ICS is community-supported. Your generosity expands scholarships, sustains public engagement, and makes the kind of conversations that matter possible for people across Canada and beyond.</p>
+    </div>
+  </div>
+</section>
+<div class="accent-rule"></div>
+
+<!-- DONATE INTRO -->
+<section class="donate-intro">
+  <div class="container">
+    <div class="donate-intro__inner reveal">
+      <p class="eyebrow">Give to ICS</p>
+      <h2 class="section-title" style="margin-top:0.5rem;">Ways to Donate</h2>
+      <p class="donate-intro__body">Whether you give online, by cheque, or through a recurring arrangement, every gift helps form the next generation of Christian scholars. For questions about donating, arranging regular gifts by bank transfer or credit card, please email <a href="mailto:donorrelations@icscanada.edu">donorrelations@icscanada.edu</a> or call <strong>Matthew</strong> at <strong style="color:var(--wine);">416-979-2331 x223</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DONATION CARDS -->
+<section class="donate-grid">
+  <div class="container">
+    <div class="donate-grid__inner">
+
+      <div class="donate-card reveal">
+        <span class="donate-card__eyebrow">Canadian Supporters</span>
+        <h3 class="donate-card__title">Canadian Donations</h3>
+        <p class="donate-card__desc">Donate online through CanadaHelps using the form below, or <a href="https://canadahelps.org/dn/8522" target="_blank">visit CanadaHelps directly</a>. Canadian tax receipts are issued automatically.</p>
+        <div class="donate-card__btn-row">
+          <a href="https://canadahelps.org/dn/8522" class="btn btn-accent btn-arrow">Donate Online</a>
+          <!-- <a href="#canadahelps-form" class="btn btn-accent btn-arrow">Donate Online</a> -->
+        </div>
+        <div class="donate-card__divider"></div>
+        <p class="donate-card__alt-title">Or Donate by Cheque</p>
+        <address class="donate-card__address">
+          <strong>Institute for Christian Studies</strong><br>
+          59 St. George St.<br>
+          Toronto, ON M5S 9Z9
+        </address>
+      </div>
+
+      <div class="donate-card donate-card--teal reveal">
+        <span class="donate-card__eyebrow">U.S. Supporters</span>
+        <h3 class="donate-card__title">U.S. Donations</h3>
+        <p class="donate-card__desc">U.S. supporters who would like to receive U.S. tax receipts can donate through our charitable foundation, <strong>Friends of ICS (FICS)</strong>, via PayPal.</p>
+        <div class="donate-card__btn-row">
+          <a href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=4UGUYT3L7WN6W&source=url" target="_blank" class="btn btn-accent btn-arrow">Donate via PayPal</a>
+        </div>
+        <div class="donate-card__divider"></div>
+        <p class="donate-card__alt-title">Or Donate by Cheque</p>
+        <address class="donate-card__address">
+          <strong>Friends of ICS</strong><br>
+          PO Box 72774,<br>
+          Cleveland, OH 44192-0002
+        </address>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOM DONATE FORM -->
+<section class="donate-form-section" id="canadahelps-form">
+  <div class="container">
+    <div class="donate-form reveal">
+
+      <div class="donate-form__header">
+        <div class="donate-form__header-content">
+          <p class="donate-form__header-eyebrow">Secure Online Giving</p>
+          <h2 class="donate-form__header-title">Make a Gift to ICS (CanadaHelps)</h2>
+          <p class="donate-form__header-sub">Canadian tax receipts issued automatically through CanadaHelps</p>
+        </div>
+      </div>
+
+      <div class="donate-form__body">
+        <div class="donate-form__freq" role="radiogroup" aria-label="Donation frequency">
+          <button type="button" class="donate-form__freq-btn active" data-freq="one-time" aria-pressed="true">One-Time Gift</button>
+          <button type="button" class="donate-form__freq-btn" data-freq="monthly" aria-pressed="false">Monthly</button>
+        </div>
+
+        <label class="donate-form__label">Select an Amount</label>
+        <div class="donate-form__amounts" role="radiogroup" aria-label="Donation amount">
+          <button type="button" class="donate-form__amt" data-amount="25">$25</button>
+          <button type="button" class="donate-form__amt" data-amount="50">$50</button>
+          <button type="button" class="donate-form__amt active" data-amount="100">$100</button>
+          <button type="button" class="donate-form__amt" data-amount="250">$250</button>
+          <button type="button" class="donate-form__amt" data-amount="500">$500</button>
+          <button type="button" class="donate-form__amt" data-amount="1000">$1,000</button>
+        </div>
+
+        <div class="donate-form__custom-wrap">
+          <span class="donate-form__custom-symbol">$</span>
+          <input type="number" class="donate-form__custom" id="customAmount" placeholder="Other amount" min="1" step="1" aria-label="Custom donation amount">
+        </div>
+
+        <button type="button" class="donate-form__submit" id="donateBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Donate $100
+        </button>
+      </div>
+
+      <div class="donate-form__footer">
+        <p class="donate-form__secure">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Processed securely by <a href="https://canadahelps.org/dn/8522" target="_blank">CanadaHelps</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BANNER -->
+<section class="contact-banner">
+  <div class="container">
+    <div class="contact-banner__content reveal">
+      <p class="contact-banner__eyebrow">Questions About Giving?</p>
+      <h2 class="contact-banner__title">For all donation-related inquiries, reach out to our team</h2>
+      <p class="contact-banner__body">We are happy to help you find the giving option that works best for you, whether it is a one-time gift, a recurring donation, or a legacy gift.</p>
+      <div class="contact-banner__details">
+        <div class="contact-banner__item">
+          <div class="contact-banner__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact-banner__label"><a href="mailto:donorrelations@icscanada.edu">donorrelations@icscanada.edu</a></span>
+        </div>
+        <div class="contact-banner__item">
+          <div class="contact-banner__icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="contact-banner__label"><strong>Matthew</strong> &middot; 416-979-2331 x223</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Institute for Christian Studies</div>
+        <p class="footer__desc">Graduate education, research, and community service in the Reformational tradition since 1967. Forming the next generation of Christian scholars.</p>
+        <address class="footer__address">59 St. George Street<br>Toronto, Ontario M5S 2E6<br>Canada<br><br>1-416-979-2331<br><a href="mailto:info@icscanada.edu" style="color:var(--accent-light)">info@icscanada.edu</a></address>
+      </div>
+      <div>
+        <h4 class="footer__heading">Programs</h4>
+        <ul class="footer__links">
+          <li><a href="https://www.icscanada.edu/academics/phd-program">PhD in Philosophy</a></li>
+          <li><a href="https://www.icscanada.edu/academics/master-of-arts-in-philosophy">MA in Philosophy</a></li>
+          <li><a href="https://www.icscanada.edu/academics/educational-leadership">MA(Phil) Ed. Leadership</a></li>
+          <li><a href="https://www.icscanada.edu/academics/master-of-worldview-studies">Master of Worldview Studies</a></li>
+          <li><a href="https://www.icscanada.edu/academics/courses-and-syllabi">Courses &amp; Syllabi</a></li>
+          <li><a href="https://f2bf.icscanada.edu">Free to be Faithful</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Admissions</h4>
+        <ul class="footer__links">
+          <li><a href="https://www.icscanada.edu/admissions">Prospective Students</a></li>
+          <li><a href="https://www.icscanada.edu/admissions/admission-requirements-modes-of-study">Requirements &amp; Modes</a></li>
+          <li><a href="https://www.icscanada.edu/admissions/financial-aid">Financial Aid</a></li>
+          <li><a href="https://www.icscanada.edu/admissions/tuition-fees">Tuition &amp; Fees</a></li>
+          <li><a href="https://www.icscanada.edu/admissions/international-students">International Students</a></li>
+          <li><a href="https://www.icscanada.edu/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Connect</h4>
+        <ul class="footer__links">
+          <li><a href="https://www.icscanada.edu/about/our-story">Our Story</a></li>
+          <li><a href="https://www.icscanada.edu/about/mission-educational-creed">Mission &amp; Creed</a></li>
+          <li><a href="https://faculty.icscanada.edu/">Faculty</a></li>
+          <li><a href="https://www.icscanada.edu/research">Research (CPRSE)</a></li>
+          <li><a href="https://www.icscanada.edu/events">Events</a></li>
+          <li><a href="https://www.icscanada.edu/critical-faith-podcast">Critical Faith Podcast</a></li>
+          <li><a href="https://perspective.icscanada.edu/">Perspective Newsletter</a></li>
+          <li><a href="https://www.icscanada.edu/about/become-a-member">Become a Member</a></li>
+          <li><a href="https://www.icscanada.edu/donate">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Institute for Christian Studies &middot; <a href="https://www.icscanada.edu/about/privacy-policy" style="color:inherit">Privacy</a> &middot; <a href="https://www.icscanada.edu/about/accessibility-policy" style="color:inherit">Accessibility</a></span>
+      <div class="footer__social">
+        <a href="https://www.facebook.com/instituteforchristianstudies" aria-label="Facebook" title="Facebook">f</a>
+        <a href="https://twitter.com/InsChr" aria-label="X" title="X / Twitter">&#x1D54F;</a>
+        <a href="https://www.instagram.com/instituteforchristianstudies/" aria-label="Instagram" title="Instagram">ig</a>
+        <a href="https://www.linkedin.com/school/icscanada" aria-label="LinkedIn" title="LinkedIn">in</a>
+        <a href="https://www.youtube.com/user/ChristianStudies" aria-label="YouTube" title="YouTube">&#x25B6;</a>
+        <a href="https://instituteforchristianstudies.substack.com" aria-label="Substack" title="Substack" class="social-substack"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24l9.54-5.58L20.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+(function() {
+  'use strict';
+
+  /* Scroll Reveal */
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function() { entry.target.classList.add('visible'); }, i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  /* Deep-link scroll */
+  var scrollId = null;
+  if (window.location.hash) { scrollId = window.location.hash.substring(1); }
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('scrollTo')) { scrollId = params.get('scrollTo'); }
+  if (scrollId) {
+    var scrollTarget = document.getElementById(scrollId);
+    if (scrollTarget) {
+      if (scrollTarget.classList.contains('reveal')) { scrollTarget.classList.add('visible'); }
+      setTimeout(function() { scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
+    }
+  }
+
+  /* Donation Form */
+  var selectedAmount = 100;
+  var selectedFreq = 'one-time';
+  var amtBtns = document.querySelectorAll('.donate-form__amt');
+  var freqBtns = document.querySelectorAll('.donate-form__freq-btn');
+  var customInput = document.getElementById('customAmount');
+  var donateBtn = document.getElementById('donateBtn');
+  var heartSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
+
+  function updateButtonLabel() {
+    var display = selectedAmount ? '$' + Number(selectedAmount).toLocaleString() : '';
+    var freqLabel = selectedFreq === 'monthly' ? '/month' : '';
+    donateBtn.innerHTML = heartSvg + (display ? ' Donate ' + display + freqLabel : ' Donate Now');
+  }
+
+  freqBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      freqBtns.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      selectedFreq = btn.getAttribute('data-freq');
+      updateButtonLabel();
+    });
+  });
+
+  amtBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      amtBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      selectedAmount = parseInt(btn.getAttribute('data-amount'), 10);
+      customInput.value = '';
+      updateButtonLabel();
+    });
+  });
+
+  customInput.addEventListener('input', function() {
+    var val = parseInt(customInput.value, 10);
+    if (val > 0) {
+      amtBtns.forEach(function(b) { b.classList.remove('active'); });
+      selectedAmount = val;
+    } else {
+      selectedAmount = 0;
+    }
+    updateButtonLabel();
+  });
+
+  customInput.addEventListener('focus', function() {
+    amtBtns.forEach(function(b) { b.classList.remove('active'); });
+    if (!customInput.value) { selectedAmount = 0; updateButtonLabel(); }
+  });
+
+  donateBtn.addEventListener('click', function() {
+    var amt = selectedAmount || 100;
+    var baseUrl = 'https://www.canadahelps.org/en/dn/8522';
+    var urlParams = '?amount=' + amt;
+    if (selectedFreq === 'monthly') { urlParams += '&frequency=monthly'; }
+    window.open(baseUrl + urlParams, '_blank');
+  });
+
+})();
+</script>
+</body>
+</html>
