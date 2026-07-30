@@ -69,7 +69,7 @@
       "potentialAction": {
         "@type": "DonateAction",
         "name": "Donate to ICS",
-        "target": "https://www.canadahelps.org/en/dn/8522",
+        "target": "https://www.canadahelps.org/en/dn/148383",
         "recipient": { "@id": "https://www.icscanada.edu/#organization" }
       }
     }
@@ -132,6 +132,8 @@ a { text-decoration: none; color: inherit; }
 .btn-accent:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168,90,50,0.3); }
 .btn-arrow::after { content: '\2192'; transition: transform 0.3s ease; display: inline-block; }
 .btn-arrow:hover::after { transform: translateX(3px); }
+.btn-arrow--down::after { content: '\2193'; }
+.btn-arrow--down:hover::after { transform: translateY(3px); }
 .accent-rule { height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 50%, transparent); }
 
 /* ── HERO ── */
@@ -177,39 +179,28 @@ a { text-decoration: none; color: inherit; }
 .donate-card__address { font-size: 0.88rem; color: var(--text-body); line-height: 1.6; font-style: normal; }
 .donate-card__address strong { font-weight: 600; color: var(--text-dark); }
 
-/* ── CUSTOM DONATE FORM ── */
+/* ── CANADAHELPS EMBEDDED FORM ── */
 .donate-form-section { padding: 0 0 5rem; }
-.donate-form { max-width: 600px; margin: 0 auto; background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--wine); overflow: hidden; }
+.donate-form { max-width: 500px; margin: 0 auto; background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--wine); overflow: hidden; }
 .donate-form__header { background: var(--wine-deep); padding: 2rem 2rem 1.8rem; text-align: center; position: relative; overflow: hidden; }
 .donate-form__header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(168,90,50,0.08) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(168,90,50,0.05) 0%, transparent 50%); pointer-events: none; }
 .donate-form__header-content { position: relative; }
 .donate-form__header-eyebrow { font-family: var(--sans); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.4rem; }
 .donate-form__header-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--cream); line-height: 1.25; margin-bottom: 0.3rem; }
 .donate-form__header-sub { font-size: 0.78rem; color: var(--text-on-dark); font-weight: 300; }
-.donate-form__body { padding: 2rem; }
-
-.donate-form__freq { display: flex; border: 1.5px solid var(--border-light); overflow: hidden; margin-bottom: 1.8rem; background: #fff; }
-.donate-form__freq-btn { flex: 1; padding: 0.7rem 1rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-align: center; background: #fff; color: var(--text-muted); border: none; cursor: pointer; transition: all 0.25s var(--ease); min-height: 44px; }
-.donate-form__freq-btn:not(:last-child) { border-right: 1.5px solid var(--border-light); }
-.donate-form__freq-btn.active { background: var(--wine); color: #fff; }
-.donate-form__freq-btn:not(.active):hover { background: rgba(155,13,36,0.04); color: var(--wine); }
-
-.donate-form__label { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.65rem; display: block; }
-.donate-form__amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 1rem; }
-.donate-form__amt { padding: 0.85rem 0.5rem; font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--wine); background: #fff; border: 1.5px solid var(--border-light); cursor: pointer; transition: all 0.2s var(--ease); text-align: center; min-height: 44px; }
-.donate-form__amt:hover { border-color: var(--wine-soft); background: rgba(155,13,36,0.03); }
-.donate-form__amt.active { border-color: var(--wine); background: var(--wine); color: #fff; box-shadow: 0 3px 12px rgba(155,13,36,0.15); }
-
-.donate-form__custom-wrap { position: relative; margin-bottom: 1.8rem; }
-.donate-form__custom-symbol { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--text-muted); pointer-events: none; }
-.donate-form__custom { width: 100%; padding: 0.85rem 0.9rem 0.85rem 1.8rem; font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--wine); border: 1.5px solid var(--border-light); background: #fff; outline: none; transition: border-color 0.2s ease; min-height: 44px; }
-.donate-form__custom::placeholder { font-family: var(--sans); font-weight: 400; font-size: 0.85rem; color: var(--text-muted); }
-.donate-form__custom:focus { border-color: var(--wine); }
-
-.donate-form__submit { width: 100%; padding: 1rem; font-family: var(--sans); font-size: 0.92rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--accent); border: none; cursor: pointer; transition: all 0.35s var(--ease); min-height: 52px; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-.donate-form__submit:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(168,90,50,0.3); }
-.donate-form__submit:active { transform: scale(0.98); }
-.donate-form__submit svg { flex-shrink: 0; }
+.donate-form__embed { position: relative; background: #fff; min-height: 480px; }
+.donate-form__embed iframe { display: block; width: 100% !important; max-width: 100%; border: 0; }
+.donate-form__loading { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; background: #fff; transition: opacity 0.4s ease; }
+.donate-form__loading.hidden { opacity: 0; pointer-events: none; }
+.donate-form__spinner { width: 34px; height: 34px; border: 3px solid rgba(155,13,36,0.12); border-top-color: var(--wine); border-radius: 50%; animation: ch-spin 0.9s linear infinite; }
+@keyframes ch-spin { to { transform: rotate(360deg); } }
+.donate-form__loading-text { font-size: 0.8rem; color: var(--text-muted); }
+.donate-form__fallback { display: none; font-size: 0.88rem; color: var(--text-body); text-align: center; padding: 0 1.5rem; line-height: 1.7; }
+.donate-form__fallback a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+.donate-form__fallback a:hover { color: var(--accent); }
+.donate-form__loading.stalled .donate-form__spinner,
+.donate-form__loading.stalled .donate-form__loading-text { display: none; }
+.donate-form__loading.stalled .donate-form__fallback { display: block; }
 
 .donate-form__footer { padding: 0.8rem 2rem; text-align: center; border-top: 1px solid var(--border-light); background: rgba(155,13,36,0.02); }
 .donate-form__secure { font-size: 0.68rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
@@ -265,9 +256,7 @@ a { text-decoration: none; color: inherit; }
   .donate-grid__inner { grid-template-columns: 1fr; }
   .donate-card { padding: 2rem 1.4rem 1.6rem; }
   .donate-form-section { padding: 0 0 3.5rem; }
-  .donate-form__body { padding: 1.5rem; }
   .donate-form__header { padding: 1.5rem; }
-  .donate-form__amounts { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
   .donate-form__footer { padding: 0.8rem 1.5rem; }
   .contact-banner { padding: 2.5rem 0; }
   .contact-banner__details { flex-direction: column; align-items: center; }
@@ -285,15 +274,13 @@ a { text-decoration: none; color: inherit; }
   .hero__title { font-size: 1.6rem; }
   .hero__subtitle { font-size: 0.86rem; }
   .donate-card__title { font-size: 1.15rem; }
-  .donate-form__amounts { grid-template-columns: repeat(2, 1fr); }
-  .donate-form__body { padding: 1.2rem; }
   .donate-form__header { padding: 1.3rem; }
   .donate-form__header-title { font-size: 1.15rem; }
 }
 @media (max-width: 360px) { html { font-size: 90%; } .container { padding: 0 0.85rem; } .hero__title { font-size: 1.4rem; } }
-@media (hover: none) { .donate-card:hover { transform: none; box-shadow: none; } .btn:active, .donate-form__submit:active, .donate-form__amt:active { transform: scale(0.97); opacity: 0.9; } }
+@media (hover: none) { .donate-card:hover { transform: none; box-shadow: none; } .btn:active { transform: scale(0.97); opacity: 0.9; } }
 @supports (padding: env(safe-area-inset-bottom)) { .site-footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); } .hero { padding-top: calc(5rem + env(safe-area-inset-top)); } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } .btn, .donate-card, .donate-form__submit, .donate-form__amt, .donate-form__freq-btn { transition: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } .btn, .donate-card { transition: none; } .donate-form__spinner { animation: none; } }
 </style>
 </head>
 <body>
@@ -335,10 +322,9 @@ a { text-decoration: none; color: inherit; }
       <div class="donate-card reveal">
         <span class="donate-card__eyebrow">Canadian Supporters</span>
         <h3 class="donate-card__title">Canadian Donations</h3>
-        <p class="donate-card__desc">Donate online through CanadaHelps using the form below, or <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/8522">visit CanadaHelps directly</a>. Canadian tax receipts are issued automatically.</p>
+        <p class="donate-card__desc">Donate online through CanadaHelps using the form below, or <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/148383">visit CanadaHelps directly</a>. Canadian tax receipts are issued automatically.</p>
         <div class="donate-card__btn-row">
-          <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/8522" class="btn btn-accent btn-arrow">Donate Online</a>
-          <!-- <a href="#canadahelps-form" class="btn btn-accent btn-arrow">Donate Online</a> -->
+          <a href="#canadahelps-form" class="btn btn-accent btn-arrow btn-arrow--down">Donate Below</a>
         </div>
         <div class="donate-card__divider"></div>
         <p class="donate-card__alt-title">Or Donate by Cheque</p>
@@ -382,37 +368,22 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
 
-      <div class="donate-form__body">
-        <div class="donate-form__freq" role="group" aria-label="Donation frequency">
-          <button type="button" class="donate-form__freq-btn active" data-freq="one-time" aria-pressed="true">One-Time Gift</button>
-          <button type="button" class="donate-form__freq-btn" data-freq="monthly" aria-pressed="false">Monthly</button>
+      <div class="donate-form__embed" id="chEmbedMount">
+        <div class="donate-form__loading" id="chLoading" role="status" aria-live="polite">
+          <div class="donate-form__spinner" aria-hidden="true"></div>
+          <p class="donate-form__loading-text">Loading the secure donation form&hellip;</p>
+          <p class="donate-form__fallback">The form is taking longer than expected to load. You can <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/148383">give directly on CanadaHelps</a> &mdash; same form, same tax receipt.</p>
         </div>
-
-        <label class="donate-form__label">Select an Amount</label>
-        <div class="donate-form__amounts" role="group" aria-label="Donation amount">
-          <button type="button" class="donate-form__amt" data-amount="25" aria-pressed="false">$25</button>
-          <button type="button" class="donate-form__amt" data-amount="50" aria-pressed="false">$50</button>
-          <button type="button" class="donate-form__amt active" data-amount="100" aria-pressed="true">$100</button>
-          <button type="button" class="donate-form__amt" data-amount="250" aria-pressed="false">$250</button>
-          <button type="button" class="donate-form__amt" data-amount="500" aria-pressed="false">$500</button>
-          <button type="button" class="donate-form__amt" data-amount="1000" aria-pressed="false">$1,000</button>
-        </div>
-
-        <div class="donate-form__custom-wrap">
-          <span class="donate-form__custom-symbol">$</span>
-          <input type="number" class="donate-form__custom" id="customAmount" placeholder="Other amount" min="1" step="0.01" aria-label="Custom donation amount">
-        </div>
-
-        <button type="button" class="donate-form__submit" id="donateBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          Donate $100
-        </button>
+        <script id="ch_cdn_embed" type="text/javascript" src="https://www.canadahelps.org/secure/js/cdf_embed.2.js" charset="utf-8" data-language="en" data-page-id="148383" data-root-url="https://www.canadahelps.org" data-formtype="1" data-cfasync="false"></script>
+        <noscript>
+          <p class="donate-form__fallback" style="display:block; padding:2rem 1.5rem;">The embedded form needs JavaScript. You can <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/148383">give directly on CanadaHelps</a> instead.</p>
+        </noscript>
       </div>
 
       <div class="donate-form__footer">
         <p class="donate-form__secure">
           <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Processed securely by <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/8522">CanadaHelps</a>
+          Processed securely by <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/148383">CanadaHelps</a>
         </p>
       </div>
 
@@ -536,70 +507,32 @@ a { text-decoration: none; color: inherit; }
     }
   }
 
-  /* Donation Form */
-  var selectedAmount = 100;
-  var selectedFreq = 'one-time';
-  var amtBtns = document.querySelectorAll('.donate-form__amt');
-  var freqBtns = document.querySelectorAll('.donate-form__freq-btn');
-  var customInput = document.getElementById('customAmount');
-  var donateBtn = document.getElementById('donateBtn');
-  var heartSvg = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
-
-  function clearAmtButtons() {
-    amtBtns.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-  }
-
-  function updateButtonLabel() {
-    var amt = selectedAmount || 100; /* keep visible label in sync with the click fallback */
-    var display = '$' + Number(amt).toLocaleString('en-CA', { maximumFractionDigits: 2 });
-    var freqLabel = selectedFreq === 'monthly' ? '/month' : '';
-    donateBtn.innerHTML = heartSvg + ' Donate ' + display + freqLabel;
-  }
-
-  freqBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      freqBtns.forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      selectedFreq = btn.getAttribute('data-freq');
-      updateButtonLabel();
-    });
-  });
-
-  amtBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      clearAmtButtons();
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      selectedAmount = parseInt(btn.getAttribute('data-amount'), 10);
-      customInput.value = '';
-      updateButtonLabel();
-    });
-  });
-
-  customInput.addEventListener('input', function() {
-    var val = parseFloat(customInput.value);
-    if (val > 0) {
-      clearAmtButtons();
-      selectedAmount = Math.round(val * 100) / 100; /* keep cents, avoid float artifacts */
+  /* CanadaHelps embedded form: loading state + fallback.
+     The embed is a cross-origin iframe injected by cdf_embed.2.js
+     next to the #ch_cdn_embed script tag inside #chEmbedMount. */
+  var chMount = document.getElementById('chEmbedMount');
+  var chLoading = document.getElementById('chLoading');
+  if (chMount && chLoading) {
+    var chDone = function() { chLoading.classList.add('hidden'); };
+    var chWatch = function(iframe) {
+      iframe.addEventListener('load', chDone);
+      /* safety net in case load fired before we attached */
+      setTimeout(chDone, 6000);
+    };
+    var chFrame = chMount.querySelector('iframe');
+    if (chFrame) {
+      chWatch(chFrame);
     } else {
-      selectedAmount = 0;
+      var chObserver = new MutationObserver(function() {
+        var f = chMount.querySelector('iframe');
+        if (f) { chObserver.disconnect(); chWatch(f); }
+      });
+      chObserver.observe(chMount, { childList: true, subtree: true });
+      setTimeout(function() {
+        if (!chMount.querySelector('iframe')) { chLoading.classList.add('stalled'); }
+      }, 8000);
     }
-    updateButtonLabel();
-  });
-
-  customInput.addEventListener('focus', function() {
-    clearAmtButtons();
-    if (!customInput.value) { selectedAmount = 0; updateButtonLabel(); }
-  });
-
-  donateBtn.addEventListener('click', function() {
-    var amt = selectedAmount || 100;
-    var baseUrl = 'https://www.canadahelps.org/en/dn/8522';
-    var urlParams = '?amount=' + amt;
-    if (selectedFreq === 'monthly') { urlParams += '&frequency=monthly'; }
-    window.open(baseUrl + urlParams, '_blank');
-  });
+  }
 
 })();
 </script>
