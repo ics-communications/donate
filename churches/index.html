@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Churches | Institute for Christian Studies</title>
+<meta name="description" content="Resources from the Institute for Christian Studies for your congregation: the Justice &amp; Faith research and play, recorded conversations, and talks. Free for your church to use.">
+<!-- TODO: canonical URL pending team confirmation (donate.icscanada.edu/churches/ vs a home on icscanada.edu). Must match the URL printed in the church letter. -->
+<link rel="canonical" href="https://donate.icscanada.edu/churches/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#7A0A1C">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Institute for Christian Studies">
+<meta property="og:title" content="Resources for Churches | Institute for Christian Studies">
+<meta property="og:description" content="Research, recordings, and talks from the ICS community, offered freely to your congregation.">
+<meta property="og:url" content="https://donate.icscanada.edu/churches/">
+<!-- TODO: swap og:image to the church-specific hero photo once sourced. -->
+<meta property="og:image" content="https://donate.icscanada.edu/assets/hero.jpg">
+<meta property="og:locale" content="en_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Resources for Churches | Institute for Christian Studies">
+<meta name="twitter:description" content="Research, recordings, and talks from the ICS community, offered freely to your congregation.">
+<meta name="twitter:image" content="https://donate.icscanada.edu/assets/hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollegeOrUniversity",
+      "@id": "https://www.icscanada.edu/#organization",
+      "name": "Institute for Christian Studies",
+      "alternateName": "ICS",
+      "url": "https://www.icscanada.edu",
+      "logo": "https://donate.icscanada.edu/assets/favicon.png",
+      "email": "info@icscanada.edu",
+      "telephone": "+1-416-979-2331",
+      "foundingDate": "1967",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "59 St. George Street",
+        "addressLocality": "Toronto",
+        "addressRegion": "ON",
+        "postalCode": "M5S 2E6",
+        "addressCountry": "CA"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://donate.icscanada.edu/churches/#webpage",
+      "url": "https://donate.icscanada.edu/churches/",
+      "name": "For Churches | Institute for Christian Studies",
+      "description": "Resources from the Institute for Christian Studies for congregations: research, recordings, and talks, free for churches to use.",
+      "inLanguage": "en-CA",
+      "about": { "@id": "https://www.icscanada.edu/#organization" }
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   RESET & VARIABLES (mirrors the ICS donation page system)
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --wine:        #9B0D24;
+  --wine-deep:   #7A0A1C;
+  --wine-mid:    #BE0B28;
+  --wine-soft:   #D44B5E;
+
+  --accent:       #A85A32;
+  --accent-light: #C87A52;
+  --accent-muted: #8E4A28;
+  --accent-pale:  #EEDACA;
+  --accent-deep:  #7A4020;
+
+  --teal:         #7A5C3A;
+  --teal-light:   #A07A4E;
+  --teal-muted:   #6B4E30;
+  --teal-pale:    #E6D9C6;
+  --teal-deep:    #5A4228;
+
+  --cream:       #FDFBF7;
+  --cream-warm:  #F9F5ED;
+  --parchment:   #F0E9DD;
+  --text-dark:   #2E1318;
+  --text-body:   #3A3330;
+  --text-muted:  #857E78;
+  --text-on-dark:#E8C2C2;
+  --border-light:rgba(155,13,36,0.08);
+
+  --serif: 'Libre Baskerville', Georgia, serif;
+  --sans:  'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ease:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html { scroll-behavior: smooth; font-size: 110%; }
+body {
+  font-family: var(--sans); color: var(--text-body); background: var(--cream);
+  line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+a:focus-visible, button:focus-visible, audio:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── SHARED ── */
+.eyebrow { font-family: var(--sans); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-muted); }
+.section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--wine); line-height: 1.2; }
+.btn { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1.6rem; border: none; cursor: pointer; transition: all 0.35s var(--ease); min-height: 44px; }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168,90,50,0.3); }
+.btn-arrow::after { content: '\2192'; transition: transform 0.3s ease; display: inline-block; }
+.btn-arrow:hover::after { transform: translateX(3px); }
+.btn-pending { background: var(--parchment); color: var(--text-muted); cursor: default; }
+.accent-rule { height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 50%, transparent); }
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 42vh; display: flex; align-items: center; background: var(--wine-deep); overflow: hidden; padding: 5rem 0 4rem; }
+.hero__bg { position: absolute; inset: 0; }
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.25) brightness(0.7); }
+.hero__overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 90%, rgba(168,90,50,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(168,90,50,0.05) 0%, transparent 45%), linear-gradient(160deg, rgba(122,10,28,0.94) 0%, rgba(122,10,28,0.78) 100%); }
+.hero__accent-rule { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 40%, transparent 80%); z-index: 10; }
+.hero__content { position: relative; z-index: 5; width: 100%; }
+.hero__inner { max-width: 700px; }
+.hero__back { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.25s var(--ease); min-height: 44px; }
+.hero__back::before { content: '\2190'; font-size: 0.95rem; line-height: 1; transition: transform 0.3s ease; display: inline-block; }
+.hero__back:hover { color: var(--cream); }
+.hero__back:hover::before { transform: translateX(-3px); }
+.hero__eyebrow { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--accent-light); letter-spacing: 0.06em; margin-bottom: 0.75rem; opacity: 0.9; }
+.hero__title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; color: var(--cream); line-height: 1.14; margin-bottom: 1.1rem; padding-bottom: 0.15em; }
+.hero__title em { font-style: italic; color: var(--accent-light); }
+.hero__subtitle { font-family: var(--sans); font-size: 1.02rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.75; max-width: 560px; }
+
+/* ── INTRO ── */
+.page-intro { padding: 4rem 0 3rem; }
+.page-intro__inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.page-intro__body { font-size: 0.95rem; color: var(--text-body); line-height: 1.75; margin-top: 1rem; }
+.page-intro__posture { font-family: var(--serif); font-style: italic; font-size: 1.02rem; color: var(--wine); line-height: 1.7; margin-top: 1.4rem; }
+
+/* ── FEATURED RESOURCE ── */
+.feature-section { padding: 1rem 0 4rem; }
+.feature { background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--wine); overflow: hidden; }
+.feature__header { background: var(--wine-deep); padding: 2rem 2.5rem 1.8rem; position: relative; overflow: hidden; }
+.feature__header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(168,90,50,0.08) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(168,90,50,0.05) 0%, transparent 50%); pointer-events: none; }
+.feature__header-content { position: relative; }
+.feature__title { font-family: var(--serif); font-size: clamp(1.4rem, 2.8vw, 1.9rem); font-weight: 700; color: var(--cream); line-height: 1.25; margin-bottom: 0.35rem; }
+.feature__sub { font-size: 0.85rem; color: var(--text-on-dark); font-weight: 300; }
+.feature__body { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; padding: 2.5rem; align-items: center; }
+.feature__desc { font-size: 0.95rem; line-height: 1.75; color: var(--text-body); }
+.feature__desc p { margin-bottom: 1.5rem; }
+
+/* Video facade: poster + play button; iframe injected on click only */
+.video-facade { position: relative; aspect-ratio: 16 / 9; background: var(--wine-deep); overflow: hidden; }
+.video-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-facade__btn { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; background: radial-gradient(ellipse at 50% 40%, rgba(168,90,50,0.18) 0%, transparent 60%), var(--wine-deep); border: none; cursor: pointer; color: var(--cream); font-family: var(--sans); }
+.video-facade__btn:hover .video-facade__glyph { background: var(--accent); }
+.video-facade__glyph { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(168,90,50,0.35); transition: background 0.3s var(--ease); }
+.video-facade__glyph svg { width: 22px; height: 22px; fill: var(--cream); margin-left: 3px; }
+.video-facade__label { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; color: var(--text-on-dark); }
+.video-facade__pending { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; color: var(--text-on-dark); text-align: center; padding: 1rem; }
+.video-facade__pending .video-facade__glyph { opacity: 0.5; }
+.video-facade__note { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); }
+
+/* ── RESOURCE CARDS ── */
+.resource-grid { padding: 0 0 4rem; }
+.resource-grid__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.resource-card { background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); padding: 2.5rem 2rem 2rem; display: flex; flex-direction: column; transition: all 0.4s var(--ease); }
+.resource-card:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(155,13,36,0.07); }
+.resource-card--teal { border-top-color: var(--teal); }
+.resource-card__tag { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-muted); margin-bottom: 0.5rem; }
+.resource-card--teal .resource-card__tag { color: var(--teal-muted); }
+.resource-card__title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--wine); line-height: 1.25; margin-bottom: 0.8rem; }
+.resource-card__desc { font-size: 0.9rem; color: var(--text-body); line-height: 1.65; margin-bottom: 1.5rem; flex-grow: 1; }
+.resource-card audio { width: 100%; margin-bottom: 1rem; }
+.resource-card__fallback { font-size: 0.78rem; color: var(--text-muted); }
+.resource-card__fallback a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.resource-card__fallback a:hover { color: var(--accent); }
+
+/* ── ENGAGE FURTHER STRIP ── */
+.engage-strip { background: var(--parchment); border-top: 1px solid var(--border-light); padding: 2.2rem 0; }
+.engage-strip__inner { display: flex; gap: 2.5rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+.engage-strip__lead { font-family: var(--serif); font-size: 0.95rem; color: var(--text-dark); }
+.engage-strip__link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--wine); padding: 0.6rem 0; min-height: 44px; transition: color 0.25s var(--ease); }
+.engage-strip__link::after { content: '\2192'; transition: transform 0.3s ease; display: inline-block; }
+.engage-strip__link:hover { color: var(--accent); }
+.engage-strip__link:hover::after { transform: translateX(3px); }
+
+/* ── CONTACT BANNER ── */
+.contact-banner { position: relative; padding: 3.5rem 0; background: var(--wine); overflow: hidden; }
+.contact-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(168,90,50,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(168,90,50,0.04) 0%, transparent 60%); pointer-events: none; }
+.contact-banner__content { position: relative; text-align: center; max-width: 640px; margin: 0 auto; }
+.contact-banner__eyebrow { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.8rem; }
+.contact-banner__title { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700; color: var(--cream); line-height: 1.35; margin-bottom: 1rem; }
+.contact-banner__body { font-size: 0.92rem; color: var(--text-on-dark); line-height: 1.7; margin-bottom: 1.5rem; }
+.contact-banner__details { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.contact-banner__item { display: flex; align-items: center; gap: 0.6rem; }
+.contact-banner__icon { width: 36px; height: 36px; background: rgba(168,90,50,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-light); }
+.contact-banner__icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact-banner__label { font-size: 0.82rem; color: var(--cream); font-weight: 500; }
+.contact-banner__label a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 2px; }
+.contact-banner__label a:hover { color: #fff; }
+
+/* ── FOOTER ── */
+.site-footer { background: var(--wine-deep); padding: 3.5rem 0 2rem; color: var(--text-on-dark); border-top: 1px solid rgba(168,90,50,0.12); }
+.footer__grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+.footer__brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--cream); margin-bottom: 0.75rem; }
+.footer__desc { font-size: 0.82rem; line-height: 1.7; margin-bottom: 1.2rem; max-width: 280px; }
+.footer__address { font-size: 0.82rem; line-height: 1.7; font-style: normal; }
+.footer__heading { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1.2rem; }
+.footer__links { list-style: none; }
+.footer__links li { margin-bottom: 0.6rem; }
+.footer__links a { font-size: 0.85rem; color: var(--text-on-dark); transition: color 0.2s ease; display: inline-block; padding: 0.15rem 0; }
+.footer__links a:hover { color: var(--accent-light); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(212,172,172,0.5); }
+.footer__social { display: flex; gap: 0.6rem; }
+.footer__social a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--text-on-dark); transition: all 0.2s ease; }
+.footer__social a:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.footer__social .social-substack { font-size: 0.6rem; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ── ANIMATION ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) { .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 768px) {
+  html { font-size: 100%; }
+  .container { padding: 0 1.25rem; }
+  .hero { min-height: auto; padding: 2.5rem 0 2rem; }
+  .hero__title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .hero__subtitle { font-size: 0.92rem; }
+  .page-intro { padding: 3rem 0 2rem; }
+  .feature__body { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.8rem 1.4rem; }
+  .feature__header { padding: 1.5rem; }
+  .resource-grid__inner { grid-template-columns: 1fr; }
+  .resource-card { padding: 2rem 1.4rem 1.6rem; }
+  .engage-strip__inner { flex-direction: column; gap: 0.4rem; }
+  .contact-banner { padding: 2.5rem 0; }
+  .contact-banner__details { flex-direction: column; align-items: center; }
+  .site-footer { padding: 2.5rem 0 1.5rem; }
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer__desc { max-width: 100%; }
+  .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer__social { justify-content: center; }
+  .footer__social a { width: 40px; height: 40px; }
+}
+@media (max-width: 480px) {
+  html { font-size: 95%; }
+  .container { padding: 0 1rem; }
+  .hero { padding: 2rem 0 1.8rem; }
+  .hero__title { font-size: 1.6rem; }
+  .hero__subtitle { font-size: 0.86rem; }
+  .resource-card__title { font-size: 1.15rem; }
+  .feature__header { padding: 1.3rem; }
+  .feature__title { font-size: 1.2rem; }
+}
+@media (max-width: 360px) { html { font-size: 90%; } .container { padding: 0 0.85rem; } .hero__title { font-size: 1.4rem; } }
+@media (hover: none) { .resource-card:hover { transform: none; box-shadow: none; } .btn:active { transform: scale(0.97); opacity: 0.9; } }
+@supports (padding: env(safe-area-inset-bottom)) { .site-footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); } .hero { padding-top: calc(5rem + env(safe-area-inset-top)); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } .btn, .resource-card { transition: none; } }
+</style>
+</head>
+<body>
+<!--
+THESIS: A gift shelf, not a pitch. Three curated resources presented with
+institutional warmth; refuses the donation-page conversion pattern and every
+solicitation device.
+OWN-WORLD: Wine and cream with copper accents, Libre Baskerville display over
+Outfit, square corners, 3px accent rules, quiet reveal motion.
+STORY: A church leader arrives from the letter, sees within one viewport that
+ICS is offering their congregation something free and substantial, engages one
+resource, and knows who to email for more.
+FIRST VIEWPORT: Dark wine hero over a photograph; back link, eyebrow, serif
+title with one italic word, one-sentence subtitle. No buttons; the shelf is
+one scroll away.
+FORM: Extension of the incumbent ICS donate-page world; no new identity.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the
+finish review, the verdict, and DESIGN.md
+-->
+
+<!-- HERO -->
+<!-- TODO: swap ../assets/hero.jpg for the church-specific photo when sourced
+     (congregation / sanctuary / ICS event with church partners). -->
+<section class="hero">
+  <div class="hero__accent-rule"></div>
+  <div class="hero__bg">
+    <img src="../assets/hero.jpg" alt="">
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content container">
+    <div class="hero__inner">
+      <a target="_blank" rel="noopener" href="https://icscanada.edu" class="hero__back">Back to ICS Home</a>
+      <p class="hero__eyebrow">Institute for Christian Studies</p>
+      <h1 class="hero__title">A Companion for Your <em>Congregation</em></h1>
+      <!-- TODO: final hero wording to be aligned with the edited church letter. -->
+      <p class="hero__subtitle">Leading a church today is heavy work. These resources from the ICS community are yours, free to use.</p>
+    </div>
+  </div>
+</section>
+<div class="accent-rule"></div>
+
+<!-- INTRO -->
+<section class="page-intro">
+  <div class="container">
+    <div class="page-intro__inner reveal">
+      <h2 class="section-title">What ICS Offers Churches</h2>
+      <p class="page-intro__body">The Institute for Christian Studies is a graduate school for philosophy and theology in Toronto, working in the Reformational tradition since 1967. We know what congregations are carrying right now: polarization, anxiety, and hard conversations. These resources are our gift to your church, and everything here is free for your congregation to use.</p>
+      <p class="page-intro__posture">Rooted without becoming rigid. Honest without becoming cynical. Faithful without becoming fearful.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED RESOURCE: JUSTICE & FAITH -->
+<section class="feature-section">
+  <div class="container">
+    <div class="feature reveal">
+      <div class="feature__header">
+        <div class="feature__header-content">
+          <h2 class="feature__title">Justice &amp; Faith</h2>
+          <p class="feature__sub">Research and a play on congregations pursuing justice</p>
+        </div>
+      </div>
+      <div class="feature__body">
+        <div class="feature__media">
+          <div class="video-facade" id="videoFacade">
+            <!-- Pending state shows until VIDEO_ID is set in the script below. -->
+            <div class="video-facade__pending" id="videoPending">
+              <div class="video-facade__glyph" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <p class="video-facade__label">The Justice &amp; Faith play</p>
+              <p class="video-facade__note">Video arriving here soon</p>
+            </div>
+          </div>
+          <noscript>
+            <p class="resource-card__fallback" style="padding-top:0.6rem;">The video needs JavaScript to play here. It will also be available on the <a target="_blank" rel="noopener" href="https://www.youtube.com/user/ChristianStudies">ICS YouTube channel</a>.</p>
+          </noscript>
+        </div>
+        <div class="feature__desc">
+          <!-- TODO: verify the exact published title and landing URL of the
+               Justice & Faith research before launch; the CTA below points to
+               the ICS research page as an interim, real destination. -->
+          <p>A collaborative research project exploring how Christian Reformed congregations understand and pursue justice, developed with the Centre for Community Based Research. The play performed as part of the project brings its findings to life, and both are offered here for your church to watch, read, and discuss.</p>
+          <a target="_blank" rel="noopener" href="https://www.icscanada.edu/research" class="btn btn-accent btn-arrow">Read the Research</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCE CARDS -->
+<section class="resource-grid">
+  <div class="container">
+    <div class="resource-grid__inner">
+
+      <div class="resource-card reveal">
+        <span class="resource-card__tag">Listen</span>
+        <!-- TODO: confirm full names, session title, topic, and permission. -->
+        <h3 class="resource-card__title">A Conversation with Len &amp; Sylvia</h3>
+        <p class="resource-card__desc">A recorded conversation from the ICS community, offered for your congregation to listen to and discuss together.</p>
+        <!-- TODO: audio file does not exist yet. Host the recording at
+             ../assets/len-sylvia-recording.mp3 or point both the source and
+             the download link at its confirmed host. -->
+        <audio controls preload="none">
+          <source src="../assets/len-sylvia-recording.mp3" type="audio/mpeg">
+          Your browser does not support audio playback.
+        </audio>
+        <p class="resource-card__fallback">Prefer a file? <a href="../assets/len-sylvia-recording.mp3" download>Download the recording</a>.</p>
+      </div>
+
+      <div class="resource-card resource-card--teal reveal">
+        <span class="resource-card__tag">Watch</span>
+        <!-- TODO: soft-confirmed item. Verify what the May 3rd asset is
+             (medium, title, speakers) and permission to publish; replace the
+             pending label below with a real "Watch the Talk" CTA and link.
+             If unconfirmed by launch, remove this card and let the Listen
+             card sit alone at a comfortable max-width. -->
+        <h3 class="resource-card__title">Kristin Kobes Du Mez and Nicholas Wolterstorff</h3>
+        <p class="resource-card__desc">From this past May: a talk offered for your congregation to share and discuss together.</p>
+        <span class="btn btn-pending" aria-disabled="true">Available Soon</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGE FURTHER -->
+<section class="engage-strip">
+  <div class="container">
+    <div class="engage-strip__inner reveal">
+      <span class="engage-strip__lead">Keep the conversation going</span>
+      <a target="_blank" rel="noopener" href="https://f2bf.icscanada.edu" class="engage-strip__link">Explore Free to be Faithful Courses</a>
+      <a target="_blank" rel="noopener" href="https://instituteforchristianstudies.substack.com" class="engage-strip__link">Read our Substack</a>
+      <a target="_blank" rel="noopener" href="https://www.icscanada.edu/critical-faith-podcast" class="engage-strip__link">Hear the Critical Faith Podcast</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BANNER -->
+<section class="contact-banner">
+  <div class="container">
+    <div class="contact-banner__content reveal">
+      <p class="contact-banner__eyebrow">For Churches</p>
+      <h2 class="contact-banner__title">Tell us what your congregation needs</h2>
+      <p class="contact-banner__body">These resources will grow. If your church is navigating something we could help with, or you would like to explore working with ICS, we would love to hear from you.</p>
+      <div class="contact-banner__details">
+        <div class="contact-banner__item">
+          <div class="contact-banner__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <!-- TODO: named contact person for church engagement unconfirmed;
+               info@icscanada.edu is the agreed fallback. -->
+          <span class="contact-banner__label"><a href="mailto:info@icscanada.edu">info@icscanada.edu</a></span>
+        </div>
+        <div class="contact-banner__item">
+          <div class="contact-banner__icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="contact-banner__label">1-416-979-2331</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Institute for Christian Studies</div>
+        <p class="footer__desc">Graduate education, research, and community service in the Reformational tradition since 1967. Forming the next generation of Christian scholars.</p>
+        <address class="footer__address">59 St. George Street<br>Toronto, Ontario M5S 2E6<br>Canada<br><br>1-416-979-2331<br><a href="mailto:info@icscanada.edu" style="color:var(--accent-light)">info@icscanada.edu</a></address>
+      </div>
+      <div>
+        <h4 class="footer__heading">Programs</h4>
+        <ul class="footer__links">
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/phd-program">PhD in Philosophy</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/master-of-arts-in-philosophy">MA in Philosophy</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/educational-leadership">MA(Phil) Ed. Leadership</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/master-of-worldview-studies">Master of Worldview Studies</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/courses-and-syllabi">Courses &amp; Syllabi</a></li>
+          <li><a target="_blank" rel="noopener" href="https://f2bf.icscanada.edu">Free to be Faithful</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Admissions</h4>
+        <ul class="footer__links">
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions">Prospective Students</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/admission-requirements-modes-of-study">Requirements &amp; Modes</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/financial-aid">Financial Aid</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/tuition-fees">Tuition &amp; Fees</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/international-students">International Students</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Connect</h4>
+        <ul class="footer__links">
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/our-story">Our Story</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/mission-educational-creed">Mission &amp; Creed</a></li>
+          <li><a target="_blank" rel="noopener" href="https://faculty.icscanada.edu/">Faculty</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/research">Research (CPRSE)</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/events">Events</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/critical-faith-podcast">Critical Faith Podcast</a></li>
+          <li><a target="_blank" rel="noopener" href="https://perspective.icscanada.edu/">Perspective Newsletter</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/become-a-member">Become a Member</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/donate">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Institute for Christian Studies &middot; <a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/privacy-policy" style="color:inherit">Privacy</a> &middot; <a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/accessibility-policy" style="color:inherit">Accessibility</a></span>
+      <div class="footer__social">
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/instituteforchristianstudies" aria-label="Facebook" title="Facebook">f</a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/InsChr" aria-label="X" title="X / Twitter">&#x1D54F;</a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/instituteforchristianstudies/" aria-label="Instagram" title="Instagram">ig</a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/school/icscanada" aria-label="LinkedIn" title="LinkedIn">in</a>
+        <a target="_blank" rel="noopener" href="https://www.youtube.com/user/ChristianStudies" aria-label="YouTube" title="YouTube">&#x25B6;</a>
+        <a target="_blank" rel="noopener" href="https://instituteforchristianstudies.substack.com" aria-label="Substack" title="Substack" class="social-substack"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24l9.54-5.58L20.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+(function() {
+  'use strict';
+
+  /* Scroll Reveal */
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function() { entry.target.classList.add('visible'); }, i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  /* Justice & Faith play: click-to-play facade.
+     TODO: set VIDEO_ID to the verified YouTube ID of the play. While it is
+     empty, the pending panel stays visible. */
+  var VIDEO_ID = '';
+  var VIDEO_TITLE = 'The Justice and Faith play';
+  var facade = document.getElementById('videoFacade');
+  var pending = document.getElementById('videoPending');
+  if (facade && VIDEO_ID) {
+    if (pending) { pending.remove(); }
+    var btn = document.createElement('button');
+    btn.className = 'video-facade__btn';
+    btn.setAttribute('aria-label', 'Play: ' + VIDEO_TITLE);
+    btn.style.backgroundImage = "linear-gradient(rgba(122,10,28,0.55), rgba(122,10,28,0.55)), url('https://i.ytimg.com/vi/" + VIDEO_ID + "/hqdefault.jpg')";
+    btn.style.backgroundSize = 'cover';
+    btn.style.backgroundPosition = 'center';
+    btn.innerHTML = '<span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="video-facade__label">Watch the play</span>';
+    btn.addEventListener('click', function() {
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0';
+      iframe.title = VIDEO_TITLE;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+    });
+    facade.appendChild(btn);
+  }
+
+})();
+</script>
+</body>
+</html>
