@@ -16,13 +16,12 @@
 <meta property="og:title" content="Resources for Churches | Institute for Christian Studies">
 <meta property="og:description" content="Research, recordings, and talks from the ICS community, offered freely to your congregation.">
 <meta property="og:url" content="https://donate.icscanada.edu/churches/">
-<!-- TODO: swap og:image to the church-specific hero photo once sourced. -->
-<meta property="og:image" content="https://donate.icscanada.edu/assets/hero.jpg">
+<meta property="og:image" content="https://donate.icscanada.edu/assets/church_hero.jpg">
 <meta property="og:locale" content="en_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Resources for Churches | Institute for Christian Studies">
 <meta name="twitter:description" content="Research, recordings, and talks from the ICS community, offered freely to your congregation.">
-<meta name="twitter:image" content="https://donate.icscanada.edu/assets/hero.jpg">
+<meta name="twitter:image" content="https://donate.icscanada.edu/assets/church_hero.jpg">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,6 +57,8 @@
   ]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ================================================================
@@ -76,6 +77,7 @@
   --accent-muted: #8E4A28;
   --accent-pale:  #EEDACA;
   --accent-deep:  #7A4020;
+  --accent-on-dark: #E8B48C; /* copper for text on wine surfaces; accent-light fails 4.5:1 there */
 
   --teal:         #7A5C3A;
   --teal-light:   #A07A4E;
@@ -88,7 +90,7 @@
   --parchment:   #F0E9DD;
   --text-dark:   #2E1318;
   --text-body:   #3A3330;
-  --text-muted:  #857E78;
+  --text-muted:  #6F6862;
   --text-on-dark:#E8C2C2;
   --border-light:rgba(155,13,36,0.08);
 
@@ -104,33 +106,39 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; color: inherit; }
-a:focus-visible, button:focus-visible, audio:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+a, button { -webkit-tap-highlight-color: rgba(155,13,36,0.14); touch-action: manipulation; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.hero a:focus-visible, .contact-banner a:focus-visible, .site-footer a:focus-visible,
+.video-facade a:focus-visible, .video-facade button:focus-visible { outline-color: var(--cream); }
+.skip-link { position: absolute; top: -100%; left: 1rem; z-index: 100; display: flex; align-items: center; min-height: 44px; background: var(--wine-deep); color: var(--cream); font-family: var(--sans); font-size: 0.85rem; font-weight: 600; padding: 0.75rem 1.25rem; }
+.skip-link:focus { top: 1rem; }
+/* --pad is the single source of gutter width; the safe-area rule below reads it
+   so notch handling never has to restate a breakpoint. */
+.container { --pad: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 var(--pad); }
 
 /* ── SHARED ── */
 .eyebrow { font-family: var(--sans); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-muted); }
 .section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--wine); line-height: 1.2; }
-.btn { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1.6rem; border: none; cursor: pointer; transition: all 0.35s var(--ease); min-height: 44px; }
+.btn { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1.6rem; border: none; cursor: pointer; transition: background-color 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease); min-height: 44px; }
 .btn-accent { background: var(--accent); color: #fff; }
 .btn-accent:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168,90,50,0.3); }
 .btn-arrow::after { content: '\2192'; transition: transform 0.3s ease; display: inline-block; }
 .btn-arrow:hover::after { transform: translateX(3px); }
-.btn-pending { background: var(--parchment); color: var(--text-muted); cursor: default; }
 .accent-rule { height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 50%, transparent); }
 
 /* ── HERO ── */
-.hero { position: relative; min-height: 42vh; display: flex; align-items: center; background: var(--wine-deep); overflow: hidden; padding: 5rem 0 4rem; }
+.hero { --hero-pad-top: 5rem; position: relative; min-height: 42vh; display: flex; align-items: center; background: var(--wine-deep); overflow: hidden; padding: var(--hero-pad-top) 0 4rem; }
 .hero__bg { position: absolute; inset: 0; }
 .hero__bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.25) brightness(0.7); }
 .hero__overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 90%, rgba(168,90,50,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(168,90,50,0.05) 0%, transparent 45%), linear-gradient(160deg, rgba(122,10,28,0.94) 0%, rgba(122,10,28,0.78) 100%); }
 .hero__accent-rule { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 40%, transparent 80%); z-index: 10; }
 .hero__content { position: relative; z-index: 5; width: 100%; }
 .hero__inner { max-width: 700px; }
-.hero__back { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.25s var(--ease); min-height: 44px; }
+.hero__back { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-on-dark); padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.25s var(--ease); min-height: 44px; }
 .hero__back::before { content: '\2190'; font-size: 0.95rem; line-height: 1; transition: transform 0.3s ease; display: inline-block; }
 .hero__back:hover { color: var(--cream); }
 .hero__back:hover::before { transform: translateX(-3px); }
-.hero__eyebrow { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--accent-light); letter-spacing: 0.06em; margin-bottom: 0.75rem; opacity: 0.9; }
+.hero__eyebrow { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--accent-on-dark); letter-spacing: 0.06em; margin-bottom: 0.75rem; }
 .hero__title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; color: var(--cream); line-height: 1.14; margin-bottom: 1.1rem; padding-bottom: 0.15em; }
 .hero__title em { font-style: italic; color: var(--accent-light); }
 .hero__subtitle { font-family: var(--sans); font-size: 1.02rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.75; max-width: 560px; }
@@ -156,26 +164,25 @@ a:focus-visible, button:focus-visible, audio:focus-visible { outline: 2px solid 
 /* Video facade: poster + play button; iframe injected on click only */
 .video-facade { position: relative; aspect-ratio: 16 / 9; background: var(--wine-deep); overflow: hidden; }
 .video-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video-facade__btn { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; background: radial-gradient(ellipse at 50% 40%, rgba(168,90,50,0.18) 0%, transparent 60%), var(--wine-deep); border: none; cursor: pointer; color: var(--cream); font-family: var(--sans); }
-.video-facade__btn:hover .video-facade__glyph { background: var(--accent); }
-.video-facade__glyph { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(168,90,50,0.35); transition: background 0.3s var(--ease); }
+.video-facade__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.video-facade__glyph { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(122,10,28,0.85); transition: background 0.3s var(--ease); }
 .video-facade__glyph svg { width: 22px; height: 22px; fill: var(--cream); margin-left: 3px; }
-.video-facade__label { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; color: var(--text-on-dark); }
-.video-facade__pending { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; color: var(--text-on-dark); text-align: center; padding: 1rem; }
-.video-facade__pending .video-facade__glyph { opacity: 0.5; }
-.video-facade__note { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); }
+.video-facade__static { position: absolute; inset: 0; width: 100%; display: flex; align-items: center; justify-content: center; padding: 1rem; border: 0; cursor: pointer; color: var(--cream); background: linear-gradient(rgba(122,10,28,0.3), rgba(122,10,28,0.3)); }
+.video-facade__static:hover .video-facade__glyph, .video-facade__static:focus-visible .video-facade__glyph { background: var(--accent); }
 
 /* ── RESOURCE CARDS ── */
 .resource-grid { padding: 0 0 4rem; }
-.resource-grid__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.resource-card { background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); padding: 2.5rem 2rem 2rem; display: flex; flex-direction: column; transition: all 0.4s var(--ease); }
+.resource-grid__inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.resource-card { background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); padding: 2.5rem 2rem 2rem; display: flex; flex-direction: column; transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
 .resource-card:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(155,13,36,0.07); }
 .resource-card--teal { border-top-color: var(--teal); }
+.resource-card--wine { border-top-color: var(--wine); }
 .resource-card__tag { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-muted); margin-bottom: 0.5rem; }
 .resource-card--teal .resource-card__tag { color: var(--teal-muted); }
+.resource-card--wine .resource-card__tag { color: var(--wine); }
 .resource-card__title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--wine); line-height: 1.25; margin-bottom: 0.8rem; }
 .resource-card__desc { font-size: 0.9rem; color: var(--text-body); line-height: 1.65; margin-bottom: 1.5rem; flex-grow: 1; }
-.resource-card audio { width: 100%; margin-bottom: 1rem; }
+.resource-card .video-facade { margin-bottom: 1rem; }
 .resource-card__fallback { font-size: 0.78rem; color: var(--text-muted); }
 .resource-card__fallback a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
 .resource-card__fallback a:hover { color: var(--accent); }
@@ -193,15 +200,15 @@ a:focus-visible, button:focus-visible, audio:focus-visible { outline: 2px solid 
 .contact-banner { position: relative; padding: 3.5rem 0; background: var(--wine); overflow: hidden; }
 .contact-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(168,90,50,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(168,90,50,0.04) 0%, transparent 60%); pointer-events: none; }
 .contact-banner__content { position: relative; text-align: center; max-width: 640px; margin: 0 auto; }
-.contact-banner__eyebrow { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.8rem; }
+.contact-banner__eyebrow { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-on-dark); margin-bottom: 0.8rem; }
 .contact-banner__title { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700; color: var(--cream); line-height: 1.35; margin-bottom: 1rem; }
 .contact-banner__body { font-size: 0.92rem; color: var(--text-on-dark); line-height: 1.7; margin-bottom: 1.5rem; }
 .contact-banner__details { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
 .contact-banner__item { display: flex; align-items: center; gap: 0.6rem; }
-.contact-banner__icon { width: 36px; height: 36px; background: rgba(168,90,50,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-light); }
+.contact-banner__icon { width: 36px; height: 36px; background: rgba(168,90,50,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-on-dark); }
 .contact-banner__icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .contact-banner__label { font-size: 0.82rem; color: var(--cream); font-weight: 500; }
-.contact-banner__label a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 2px; }
+.contact-banner__label a { color: var(--accent-on-dark); text-decoration: underline; text-underline-offset: 2px; }
 .contact-banner__label a:hover { color: #fff; }
 
 /* ── FOOTER ── */
@@ -210,15 +217,17 @@ a:focus-visible, button:focus-visible, audio:focus-visible { outline: 2px solid 
 .footer__brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--cream); margin-bottom: 0.75rem; }
 .footer__desc { font-size: 0.82rem; line-height: 1.7; margin-bottom: 1.2rem; max-width: 280px; }
 .footer__address { font-size: 0.82rem; line-height: 1.7; font-style: normal; }
-.footer__heading { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1.2rem; }
+.footer__address a { color: var(--accent-on-dark); text-decoration: underline; text-underline-offset: 2px; }
+.footer__address a:hover { color: var(--cream); }
+.footer__heading { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-on-dark); margin-bottom: 1.2rem; }
 .footer__links { list-style: none; }
 .footer__links li { margin-bottom: 0.6rem; }
 .footer__links a { font-size: 0.85rem; color: var(--text-on-dark); transition: color 0.2s ease; display: inline-block; padding: 0.15rem 0; }
-.footer__links a:hover { color: var(--accent-light); }
-.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(212,172,172,0.5); }
+.footer__links a:hover { color: var(--accent-on-dark); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(232,194,194,0.8); }
 .footer__social { display: flex; gap: 0.6rem; }
 .footer__social a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--text-on-dark); transition: all 0.2s ease; }
-.footer__social a:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.footer__social a:hover { border-color: var(--accent-on-dark); color: var(--accent-on-dark); }
 .footer__social .social-substack { font-size: 0.6rem; font-weight: 700; letter-spacing: -0.02em; }
 
 /* ── ANIMATION ── */
@@ -228,39 +237,85 @@ a:focus-visible, button:focus-visible, audio:focus-visible { outline: 2px solid 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) { .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
 @media (max-width: 768px) {
+  /* Root stays at 16px below this width. Scaling it down shrank every rem-based
+     label past legibility on phones, which is where most of this traffic lands. */
   html { font-size: 100%; }
-  .container { padding: 0 1.25rem; }
-  .hero { min-height: auto; padding: 2.5rem 0 2rem; }
+  .container { --pad: 1.25rem; }
+  .hero { --hero-pad-top: 2.5rem; min-height: auto; padding-bottom: 2rem; }
   .hero__title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
   .hero__subtitle { font-size: 0.92rem; }
+  .hero__back { font-size: 0.78rem; }
+  .hero__eyebrow { font-size: 0.85rem; }
   .page-intro { padding: 3rem 0 2rem; }
+  .page-intro__body { text-align: left; }
   .feature__body { grid-template-columns: 1fr; gap: 1.8rem; padding: 1.8rem 1.4rem; }
   .feature__header { padding: 1.5rem; }
   .resource-grid__inner { grid-template-columns: 1fr; }
   .resource-card { padding: 2rem 1.4rem 1.6rem; }
-  .engage-strip__inner { flex-direction: column; gap: 0.4rem; }
+  .resource-card__tag { font-size: 0.75rem; }
+  .resource-card__fallback { font-size: 0.85rem; }
+  .btn { font-size: 0.82rem; }
+  .engage-strip { padding: 1.6rem 0; }
+  .engage-strip__inner { flex-direction: column; align-items: stretch; gap: 0; }
+  .engage-strip__lead { text-align: center; margin-bottom: 0.5rem; }
+  .engage-strip__link { justify-content: space-between; padding: 0.85rem 0; border-bottom: 1px solid var(--border-light); }
+  .engage-strip__link:last-child { border-bottom: 0; }
   .contact-banner { padding: 2.5rem 0; }
-  .contact-banner__details { flex-direction: column; align-items: center; }
+  .contact-banner__eyebrow { font-size: 0.78rem; }
+  .contact-banner__details { flex-direction: column; align-items: center; gap: 0.75rem; }
+  .contact-banner__label { font-size: 0.9rem; }
+  .contact-banner__label a { display: inline-block; padding: 0.72rem 0; }
   .site-footer { padding: 2.5rem 0 1.5rem; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .footer__desc { max-width: 100%; }
-  .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
-  .footer__social { justify-content: center; }
-  .footer__social a { width: 40px; height: 40px; }
+  .footer__desc { max-width: 100%; font-size: 0.88rem; }
+  .footer__address { font-size: 0.88rem; }
+  .footer__address a { display: inline-block; padding: 0.82rem 0; }
+  .footer__heading { font-size: 0.78rem; }
+  /* Full-width 44px rows: footer lists are the densest tap zone on the page. */
+  .footer__links li { margin-bottom: 0; }
+  .footer__links a { display: flex; align-items: center; min-height: 44px; padding: 0.3rem 0; font-size: 0.9rem; }
+  .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; font-size: 0.8rem; }
+  .footer__bottom a { display: inline-block; padding: 0.72rem 0.2rem; }
+  .footer__social { justify-content: center; gap: 0.5rem; }
+  .footer__social a { width: 44px; height: 44px; font-size: 0.85rem; }
+  .footer__social .social-substack { font-size: 0.7rem; }
+  /* Padding + matching negative margin grows the inline hit area to ~44px
+     without opening up the line it sits in. */
+  .resource-card__fallback a { padding: 0.82rem 0.2rem; margin: -0.82rem 0; }
 }
 @media (max-width: 480px) {
-  html { font-size: 95%; }
-  .container { padding: 0 1rem; }
-  .hero { padding: 2rem 0 1.8rem; }
+  .container { --pad: 1rem; }
+  .hero { --hero-pad-top: 2rem; padding-bottom: 1.8rem; }
   .hero__title { font-size: 1.6rem; }
   .hero__subtitle { font-size: 0.86rem; }
   .resource-card__title { font-size: 1.15rem; }
   .feature__header { padding: 1.3rem; }
   .feature__title { font-size: 1.2rem; }
 }
-@media (max-width: 360px) { html { font-size: 90%; } .container { padding: 0 0.85rem; } .hero__title { font-size: 1.4rem; } }
-@media (hover: none) { .resource-card:hover { transform: none; box-shadow: none; } .btn:active { transform: scale(0.97); opacity: 0.9; } }
-@supports (padding: env(safe-area-inset-bottom)) { .site-footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); } .hero { padding-top: calc(5rem + env(safe-area-inset-top)); } }
+@media (max-width: 360px) { .container { --pad: 0.85rem; } .hero__title { font-size: 1.4rem; } }
+/* Phone in landscape keeps the desktop width rules; give the hero back its air. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { --hero-pad-top: 3rem; min-height: auto; padding-bottom: 2.5rem; }
+}
+@media (hover: none) {
+  /* No hover on touch: every :hover here would otherwise stick after a tap. */
+  .resource-card:hover { transform: none; box-shadow: none; }
+  .btn-accent:hover { background: var(--accent); transform: none; box-shadow: none; }
+  .btn-arrow:hover::after, .engage-strip__link:hover::after { transform: none; }
+  .engage-strip__link:hover { color: var(--wine); }
+  .hero__back:hover { color: var(--accent-on-dark); }
+  .hero__back:hover::before { transform: none; }
+  .video-facade__static:hover .video-facade__glyph { background: rgba(122,10,28,0.85); }
+  .btn:active { transform: scale(0.97); opacity: 0.9; }
+  .engage-strip__link:active, .footer__links a:active { color: var(--accent); }
+}
+/* Notch and home-indicator handling. These read --pad / --hero-pad-top rather
+   than restating each breakpoint, so they can never override a narrower rule. */
+@supports (padding: env(safe-area-inset-top)) {
+  .site-footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
+  .hero { padding-top: calc(var(--hero-pad-top) + env(safe-area-inset-top)); }
+  .container { padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } .btn, .resource-card { transition: none; } }
 </style>
 </head>
@@ -282,18 +337,22 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the
 finish review, the verdict, and DESIGN.md
 -->
 
+<a class="skip-link" href="#main">Skip to content</a>
+
+<main id="main">
+
 <!-- HERO -->
-<!-- TODO: swap ../assets/hero.jpg for the church-specific photo when sourced
-     (congregation / sanctuary / ICS event with church partners). -->
 <section class="hero">
   <div class="hero__accent-rule"></div>
   <div class="hero__bg">
-    <img src="../assets/hero.jpg" alt="">
+    <img src="../assets/church_hero.jpg"
+         srcset="../assets/church_hero-768.jpg 768w, ../assets/church_hero-1280.jpg 1280w, ../assets/church_hero.jpg 2048w"
+         sizes="100vw" width="2048" height="1366" alt="" fetchpriority="high" decoding="async">
   </div>
   <div class="hero__overlay"></div>
   <div class="hero__content container">
     <div class="hero__inner">
-      <a target="_blank" rel="noopener" href="https://icscanada.edu" class="hero__back">Back to ICS Home</a>
+      <a href="https://icscanada.edu" class="hero__back">Back to ICS Home</a>
       <p class="hero__eyebrow">Institute for Christian Studies</p>
       <h1 class="hero__title">A Companion for Your <em>Congregation</em></h1>
       <!-- TODO: final hero wording to be aligned with the edited church letter. -->
@@ -309,7 +368,6 @@ finish review, the verdict, and DESIGN.md
     <div class="page-intro__inner reveal">
       <h2 class="section-title">What ICS Offers Churches</h2>
       <p class="page-intro__body">The Institute for Christian Studies is a graduate school for philosophy and theology in Toronto, working in the Reformational tradition since 1967. We know what congregations are carrying right now: polarization, anxiety, and hard conversations. These resources are our gift to your church, and everything here is free for your congregation to use.</p>
-      <p class="page-intro__posture">Rooted without becoming rigid. Honest without becoming cynical. Faithful without becoming fearful.</p>
     </div>
   </div>
 </section>
@@ -326,19 +384,13 @@ finish review, the verdict, and DESIGN.md
       </div>
       <div class="feature__body">
         <div class="feature__media">
-          <div class="video-facade" id="videoFacade">
-            <!-- Pending state shows until VIDEO_ID is set in the script below. -->
-            <div class="video-facade__pending" id="videoPending">
-              <div class="video-facade__glyph" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              <p class="video-facade__label">The Justice &amp; Faith play</p>
-              <p class="video-facade__note">Video arriving here soon</p>
-            </div>
+          <div class="video-facade" data-video-id="1o6F-q_P0mw" data-video-title="The Justice and Faith play">
+            <img class="video-facade__poster" src="https://i.ytimg.com/vi/1o6F-q_P0mw/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/1o6F-q_P0mw/mqdefault.jpg 320w, https://i.ytimg.com/vi/1o6F-q_P0mw/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 500px" alt="" width="1280" height="720" loading="lazy" decoding="async">
+            <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=1o6F-q_P0mw" aria-label="Watch the Justice and Faith play">
+              <span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            </a>
           </div>
-          <noscript>
-            <p class="resource-card__fallback" style="padding-top:0.6rem;">The video needs JavaScript to play here. It will also be available on the <a target="_blank" rel="noopener" href="https://www.youtube.com/user/ChristianStudies">ICS YouTube channel</a>.</p>
-          </noscript>
+          <p class="resource-card__fallback" style="padding-top:0.6rem;">Or watch it <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=1o6F-q_P0mw">on YouTube</a>.</p>
         </div>
         <div class="feature__desc">
           <!-- TODO: verify the exact published title and landing URL of the
@@ -358,30 +410,42 @@ finish review, the verdict, and DESIGN.md
     <div class="resource-grid__inner">
 
       <div class="resource-card reveal">
-        <span class="resource-card__tag">Listen</span>
-        <!-- TODO: confirm full names, session title, topic, and permission. -->
-        <h3 class="resource-card__title">A Conversation with Len &amp; Sylvia</h3>
-        <p class="resource-card__desc">A recorded conversation from the ICS community, offered for your congregation to listen to and discuss together.</p>
-        <!-- TODO: audio file does not exist yet. Host the recording at
-             ../assets/len-sylvia-recording.mp3 or point both the source and
-             the download link at its confirmed host. -->
-        <audio controls preload="none">
-          <source src="../assets/len-sylvia-recording.mp3" type="audio/mpeg">
-          Your browser does not support audio playback.
-        </audio>
-        <p class="resource-card__fallback">Prefer a file? <a href="../assets/len-sylvia-recording.mp3" download>Download the recording</a>.</p>
+        <span class="resource-card__tag">Watch</span>
+        <h3 class="resource-card__title">Fall Big Read</h3>
+        <p class="resource-card__desc">Hanna Reichel and Kristin Kobes Du Mez in conversation for the ICS Fall Big Read, offered for your congregation to watch and discuss together.</p>
+        <div class="video-facade" data-video-id="qSiFZdVWg2U" data-video-title="Fall Big Read with Hanna Reichel and Kristin Kobes Du Mez">
+          <img class="video-facade__poster" src="https://i.ytimg.com/vi/qSiFZdVWg2U/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/qSiFZdVWg2U/mqdefault.jpg 320w, https://i.ytimg.com/vi/qSiFZdVWg2U/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 350px" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qSiFZdVWg2U" aria-label="Watch the Fall Big Read with Hanna Reichel and Kristin Kobes Du Mez">
+            <span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+        <p class="resource-card__fallback">Or watch it <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qSiFZdVWg2U">on YouTube</a>.</p>
       </div>
 
       <div class="resource-card resource-card--teal reveal">
         <span class="resource-card__tag">Watch</span>
-        <!-- TODO: soft-confirmed item. Verify what the May 3rd asset is
-             (medium, title, speakers) and permission to publish; replace the
-             pending label below with a real "Watch the Talk" CTA and link.
-             If unconfirmed by launch, remove this card and let the Listen
-             card sit alone at a comfortable max-width. -->
-        <h3 class="resource-card__title">Kristin Kobes Du Mez and Nicholas Wolterstorff</h3>
-        <p class="resource-card__desc">From this past May: a talk offered for your congregation to share and discuss together.</p>
-        <span class="btn btn-pending" aria-disabled="true">Available Soon</span>
+        <h3 class="resource-card__title">Faithful Interpretation and Questions of Sexuality</h3>
+        <p class="resource-card__desc">Dr. Sylvia Keesmaat and Rev. Len Vander Zee on reading Scripture faithfully amid the questions of sexuality congregations are navigating today.</p>
+        <div class="video-facade" data-video-id="4I57ttzPUnk" data-video-title="Dr. Sylvia Keesmaat and Rev. Len Vander Zee — Faithful Interpretation and Questions of Sexuality">
+          <img class="video-facade__poster" src="https://i.ytimg.com/vi/4I57ttzPUnk/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/4I57ttzPUnk/mqdefault.jpg 320w, https://i.ytimg.com/vi/4I57ttzPUnk/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 350px" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4I57ttzPUnk" aria-label="Watch Faithful Interpretation and Questions of Sexuality with Dr. Sylvia Keesmaat and Rev. Len Vander Zee">
+            <span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+        <p class="resource-card__fallback">Or watch it <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4I57ttzPUnk">on YouTube</a>.</p>
+      </div>
+
+      <div class="resource-card resource-card--wine reveal">
+        <span class="resource-card__tag">Watch</span>
+        <h3 class="resource-card__title">Free to be Faithful</h3>
+        <p class="resource-card__desc">Kristin Kobes Du Mez and Nicholas Wolterstorff in a conversation about living faithfully in a fearful time.</p>
+        <div class="video-facade" data-video-id="dgFxrupMIFI" data-video-title="Free to be Faithful — A Conversation with Kristin Kobes Du Mez and Nicholas Wolterstorff">
+          <img class="video-facade__poster" src="https://i.ytimg.com/vi/dgFxrupMIFI/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/dgFxrupMIFI/mqdefault.jpg 320w, https://i.ytimg.com/vi/dgFxrupMIFI/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 350px" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dgFxrupMIFI" aria-label="Watch Free to be Faithful with Kristin Kobes Du Mez and Nicholas Wolterstorff">
+            <span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+        </div>
+        <p class="resource-card__fallback">Or watch it <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dgFxrupMIFI">on YouTube</a>.</p>
       </div>
 
     </div>
@@ -395,7 +459,6 @@ finish review, the verdict, and DESIGN.md
       <span class="engage-strip__lead">Keep the conversation going</span>
       <a target="_blank" rel="noopener" href="https://f2bf.icscanada.edu" class="engage-strip__link">Explore Free to be Faithful Courses</a>
       <a target="_blank" rel="noopener" href="https://instituteforchristianstudies.substack.com" class="engage-strip__link">Read our Substack</a>
-      <a target="_blank" rel="noopener" href="https://www.icscanada.edu/critical-faith-podcast" class="engage-strip__link">Hear the Critical Faith Podcast</a>
     </div>
   </div>
 </section>
@@ -420,12 +483,14 @@ finish review, the verdict, and DESIGN.md
           <div class="contact-banner__icon">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
-          <span class="contact-banner__label">1-416-979-2331</span>
+          <span class="contact-banner__label"><a href="tel:+14169792331">1-416-979-2331</a></span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="site-footer">
@@ -434,10 +499,10 @@ finish review, the verdict, and DESIGN.md
       <div>
         <div class="footer__brand">Institute for Christian Studies</div>
         <p class="footer__desc">Graduate education, research, and community service in the Reformational tradition since 1967. Forming the next generation of Christian scholars.</p>
-        <address class="footer__address">59 St. George Street<br>Toronto, Ontario M5S 2E6<br>Canada<br><br>1-416-979-2331<br><a href="mailto:info@icscanada.edu" style="color:var(--accent-light)">info@icscanada.edu</a></address>
+        <address class="footer__address">59 St. George Street<br>Toronto, Ontario M5S 2E6<br>Canada<br><br><a href="tel:+14169792331">1-416-979-2331</a><br><a href="mailto:info@icscanada.edu">info@icscanada.edu</a></address>
       </div>
       <div>
-        <h4 class="footer__heading">Programs</h4>
+        <h3 class="footer__heading">Programs</h3>
         <ul class="footer__links">
           <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/phd-program">PhD in Philosophy</a></li>
           <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/master-of-arts-in-philosophy">MA in Philosophy</a></li>
@@ -448,7 +513,7 @@ finish review, the verdict, and DESIGN.md
         </ul>
       </div>
       <div>
-        <h4 class="footer__heading">Admissions</h4>
+        <h3 class="footer__heading">Admissions</h3>
         <ul class="footer__links">
           <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions">Prospective Students</a></li>
           <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/admission-requirements-modes-of-study">Requirements &amp; Modes</a></li>
@@ -459,7 +524,7 @@ finish review, the verdict, and DESIGN.md
         </ul>
       </div>
       <div>
-        <h4 class="footer__heading">Connect</h4>
+        <h3 class="footer__heading">Connect</h3>
         <ul class="footer__links">
           <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/our-story">Our Story</a></li>
           <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/mission-educational-creed">Mission &amp; Creed</a></li>
@@ -504,33 +569,32 @@ finish review, the verdict, and DESIGN.md
   }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
   reveals.forEach(function(el) { observer.observe(el); });
 
-  /* Justice & Faith play: click-to-play facade.
-     TODO: set VIDEO_ID to the verified YouTube ID of the play. While it is
-     empty, the pending panel stays visible. */
-  var VIDEO_ID = '';
-  var VIDEO_TITLE = 'The Justice and Faith play';
-  var facade = document.getElementById('videoFacade');
-  var pending = document.getElementById('videoPending');
-  if (facade && VIDEO_ID) {
-    if (pending) { pending.remove(); }
+  /* Click-to-play video facades. Any .video-facade with a data-video-id gets
+     a privacy-enhanced YouTube embed injected on first click; without JS the
+     static anchor inside falls through to YouTube. */
+  var facades = document.querySelectorAll('.video-facade[data-video-id]');
+  facades.forEach(function(facade) {
+    var id = facade.getAttribute('data-video-id');
+    var title = facade.getAttribute('data-video-title') || 'Video';
+    var link = facade.querySelector('.video-facade__static');
+    if (!link) { return; }
     var btn = document.createElement('button');
-    btn.className = 'video-facade__btn';
-    btn.setAttribute('aria-label', 'Play: ' + VIDEO_TITLE);
-    btn.style.backgroundImage = "linear-gradient(rgba(122,10,28,0.55), rgba(122,10,28,0.55)), url('https://i.ytimg.com/vi/" + VIDEO_ID + "/hqdefault.jpg')";
-    btn.style.backgroundSize = 'cover';
-    btn.style.backgroundPosition = 'center';
-    btn.innerHTML = '<span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="video-facade__label">Watch the play</span>';
+    btn.type = 'button';
+    btn.className = link.className;
+    btn.innerHTML = link.innerHTML;
+    btn.setAttribute('aria-label', 'Play: ' + title);
     btn.addEventListener('click', function() {
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0';
-      iframe.title = VIDEO_TITLE;
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.title = title;
       iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
       iframe.allowFullscreen = true;
       facade.innerHTML = '';
       facade.appendChild(iframe);
+      iframe.focus();
     });
-    facade.appendChild(btn);
-  }
+    link.replaceWith(btn);
+  });
 
 })();
 </script>
