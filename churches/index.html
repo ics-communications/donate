@@ -172,6 +172,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
 /* ── RESOURCE CARDS ── */
 .resource-grid { padding: 0 0 4rem; }
+.resource-grid__head { text-align: center; margin-bottom: 2rem; }
 .resource-grid__inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 .resource-card { background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); padding: 2.5rem 2rem 2rem; display: flex; flex-direction: column; transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
 .resource-card:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(155,13,36,0.07); }
@@ -180,7 +181,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .resource-card__tag { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-muted); margin-bottom: 0.5rem; }
 .resource-card--teal .resource-card__tag { color: var(--teal-muted); }
 .resource-card--wine .resource-card__tag { color: var(--wine); }
-.resource-card__title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--wine); line-height: 1.25; margin-bottom: 0.8rem; }
+/* Titles are full sentences in the current copy, so they run 3-4 lines; sized
+   down from the old short labels to keep the cards from going top-heavy. */
+.resource-card__title { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--wine); line-height: 1.35; margin-bottom: 0.8rem; }
+.resource-card__title em { font-style: italic; }
 .resource-card__desc { font-size: 0.9rem; color: var(--text-body); line-height: 1.65; margin-bottom: 1.5rem; flex-grow: 1; }
 .resource-card .video-facade { margin-bottom: 1rem; }
 .resource-card__fallback { font-size: 0.78rem; color: var(--text-muted); }
@@ -210,6 +214,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .contact-banner__label { font-size: 0.82rem; color: var(--cream); font-weight: 500; }
 .contact-banner__label a { color: var(--accent-on-dark); text-decoration: underline; text-underline-offset: 2px; }
 .contact-banner__label a:hover { color: #fff; }
+/* Giving contact sits below the rule: same banner and same icon rows as the
+   general church contact above it, one step quieter. */
+.contact-banner__note { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.12); }
+.contact-banner__note-lead { font-size: 0.85rem; color: var(--text-on-dark); line-height: 1.7; margin-bottom: 1.25rem; }
 
 /* ── FOOTER ── */
 .site-footer { background: var(--wine-deep); padding: 3.5rem 0 2rem; color: var(--text-on-dark); border-top: 1px solid rgba(168,90,50,0.12); }
@@ -265,6 +273,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   .contact-banner__details { flex-direction: column; align-items: center; gap: 0.75rem; }
   .contact-banner__label { font-size: 0.9rem; }
   .contact-banner__label a { display: inline-block; padding: 0.72rem 0; }
+  .contact-banner__note-lead { font-size: 0.9rem; }
+  .resource-grid__head { margin-bottom: 1.5rem; }
   .site-footer { padding: 2.5rem 0 1.5rem; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer__desc { max-width: 100%; font-size: 0.88rem; }
@@ -288,7 +298,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   .hero { --hero-pad-top: 2rem; padding-bottom: 1.8rem; }
   .hero__title { font-size: 1.6rem; }
   .hero__subtitle { font-size: 0.86rem; }
-  .resource-card__title { font-size: 1.15rem; }
+  .resource-card__title { font-size: 1.05rem; }
   .feature__header { padding: 1.3rem; }
   .feature__title { font-size: 1.2rem; }
 }
@@ -355,8 +365,7 @@ finish review, the verdict, and DESIGN.md
       <a href="https://icscanada.edu" class="hero__back">Back to ICS Home</a>
       <p class="hero__eyebrow">Institute for Christian Studies</p>
       <h1 class="hero__title">A Companion for Your <em>Congregation</em></h1>
-      <!-- TODO: final hero wording to be aligned with the edited church letter. -->
-      <p class="hero__subtitle">Leading a church today is heavy work. These resources from the ICS community are yours, free to use.</p>
+      <p class="hero__subtitle">Leading a church today is heavy work. We&rsquo;ve compiled these resources from the ICS community to help you and your congregation tackle the most pressing issues facing Christians today.</p>
     </div>
   </div>
 </section>
@@ -367,7 +376,7 @@ finish review, the verdict, and DESIGN.md
   <div class="container">
     <div class="page-intro__inner reveal">
       <h2 class="section-title">What ICS Offers Churches</h2>
-      <p class="page-intro__body">The Institute for Christian Studies is a graduate school for philosophy and theology in Toronto, working in the Reformational tradition since 1967. We know what congregations are carrying right now: polarization, anxiety, and hard conversations. These resources are our gift to your church, and everything here is free for your congregation to use.</p>
+      <p class="page-intro__body">The Institute for Christian Studies has walked alongside churches for more than fifty years. We&rsquo;ve listened to many congregants describe what they're wrestling with now: polarization, anxiety, and hard conversations, to name just a few. Over the years, we&rsquo;ve hosted conversations, curated events, and created resources, and we wanted to share them with you and your church to help navigate our world.</p>
     </div>
   </div>
 </section>
@@ -407,12 +416,15 @@ finish review, the verdict, and DESIGN.md
 <!-- RESOURCE CARDS -->
 <section class="resource-grid">
   <div class="container">
+    <div class="resource-grid__head reveal">
+      <h2 class="section-title">Additional Resources</h2>
+    </div>
     <div class="resource-grid__inner">
 
       <div class="resource-card reveal">
         <span class="resource-card__tag">Watch</span>
-        <h3 class="resource-card__title">Fall Big Read</h3>
-        <p class="resource-card__desc">Hanna Reichel and Kristin Kobes Du Mez in conversation for the ICS Fall Big Read, offered for your congregation to watch and discuss together.</p>
+        <h3 class="resource-card__title">Hanna Reichel and Kristin Kobes Du Mez discuss <em>For Such a Time as This: An Emergency Devotional</em></h3>
+        <p class="resource-card__desc">Hanna Reichel and Kristin Kobes Du Mez on practical ways in which the wisdom of Scripture and the historical Church can be a guide for discerning faithful action in our extraordinary moment.</p>
         <div class="video-facade" data-video-id="qSiFZdVWg2U" data-video-title="Fall Big Read with Hanna Reichel and Kristin Kobes Du Mez">
           <img class="video-facade__poster" src="https://i.ytimg.com/vi/qSiFZdVWg2U/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/qSiFZdVWg2U/mqdefault.jpg 320w, https://i.ytimg.com/vi/qSiFZdVWg2U/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 350px" alt="" width="1280" height="720" loading="lazy" decoding="async">
           <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qSiFZdVWg2U" aria-label="Watch the Fall Big Read with Hanna Reichel and Kristin Kobes Du Mez">
@@ -424,7 +436,7 @@ finish review, the verdict, and DESIGN.md
 
       <div class="resource-card resource-card--teal reveal">
         <span class="resource-card__tag">Watch</span>
-        <h3 class="resource-card__title">Faithful Interpretation and Questions of Sexuality</h3>
+        <h3 class="resource-card__title">Sylvia Keesmaat and Len Vander Zee discuss the Bible and sexuality</h3>
         <p class="resource-card__desc">Dr. Sylvia Keesmaat and Rev. Len Vander Zee on reading Scripture faithfully amid the questions of sexuality congregations are navigating today.</p>
         <div class="video-facade" data-video-id="4I57ttzPUnk" data-video-title="Dr. Sylvia Keesmaat and Rev. Len Vander Zee — Faithful Interpretation and Questions of Sexuality">
           <img class="video-facade__poster" src="https://i.ytimg.com/vi/4I57ttzPUnk/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/4I57ttzPUnk/mqdefault.jpg 320w, https://i.ytimg.com/vi/4I57ttzPUnk/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 350px" alt="" width="1280" height="720" loading="lazy" decoding="async">
@@ -437,15 +449,15 @@ finish review, the verdict, and DESIGN.md
 
       <div class="resource-card resource-card--wine reveal">
         <span class="resource-card__tag">Watch</span>
-        <h3 class="resource-card__title">Free to be Faithful</h3>
-        <p class="resource-card__desc">Kristin Kobes Du Mez and Nicholas Wolterstorff in a conversation about living faithfully in a fearful time.</p>
-        <div class="video-facade" data-video-id="dgFxrupMIFI" data-video-title="Free to be Faithful — A Conversation with Kristin Kobes Du Mez and Nicholas Wolterstorff">
-          <img class="video-facade__poster" src="https://i.ytimg.com/vi/dgFxrupMIFI/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/dgFxrupMIFI/mqdefault.jpg 320w, https://i.ytimg.com/vi/dgFxrupMIFI/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 350px" alt="" width="1280" height="720" loading="lazy" decoding="async">
-          <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dgFxrupMIFI" aria-label="Watch Free to be Faithful with Kristin Kobes Du Mez and Nicholas Wolterstorff">
+        <h3 class="resource-card__title">Angela Reitsma Bick and Peter Schuurman discuss deconstruction and faith</h3>
+        <p class="resource-card__desc">Angela Reitsma Bick and Peter Schuurman on faith, deconstruction, and <em>Blessed are the Undone</em>.</p>
+        <div class="video-facade" data-video-id="6wsNAdL7QZw" data-video-title="Finding Blessing in the Process — Angela Reitsma Bick and Peter Schuurman">
+          <img class="video-facade__poster" src="https://i.ytimg.com/vi/6wsNAdL7QZw/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/6wsNAdL7QZw/mqdefault.jpg 320w, https://i.ytimg.com/vi/6wsNAdL7QZw/maxresdefault.jpg 1280w" sizes="(max-width: 768px) 92vw, 350px" alt="" width="1280" height="720" loading="lazy" decoding="async">
+          <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=6wsNAdL7QZw" aria-label="Watch Finding Blessing in the Process with Angela Reitsma Bick and Peter Schuurman">
             <span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </a>
         </div>
-        <p class="resource-card__fallback">Or watch it <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=dgFxrupMIFI">on YouTube</a>.</p>
+        <p class="resource-card__fallback">Or watch it <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=6wsNAdL7QZw">on YouTube</a>.</p>
       </div>
 
     </div>
@@ -469,14 +481,12 @@ finish review, the verdict, and DESIGN.md
     <div class="contact-banner__content reveal">
       <p class="contact-banner__eyebrow">For Churches</p>
       <h2 class="contact-banner__title">Tell us what your congregation needs</h2>
-      <p class="contact-banner__body">These resources will grow. If your church is navigating something we could help with, or you would like to explore working with ICS, we would love to hear from you.</p>
+      <p class="contact-banner__body">In the coming years, these resources will grow. If your church is navigating something we could help with, or you would like to explore working with ICS, we would love to hear from you.</p>
       <div class="contact-banner__details">
         <div class="contact-banner__item">
           <div class="contact-banner__icon">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <!-- TODO: named contact person for church engagement unconfirmed;
-               info@icscanada.edu is the agreed fallback. -->
           <span class="contact-banner__label"><a href="mailto:info@icscanada.edu">info@icscanada.edu</a></span>
         </div>
         <div class="contact-banner__item">
@@ -484,6 +494,23 @@ finish review, the verdict, and DESIGN.md
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <span class="contact-banner__label"><a href="tel:+14169792331">1-416-979-2331</a></span>
+        </div>
+      </div>
+      <div class="contact-banner__note">
+        <p class="contact-banner__note-lead">If your congregation would like to support ICS financially, please reach out to Matthew Lee:</p>
+        <div class="contact-banner__details">
+          <div class="contact-banner__item">
+            <div class="contact-banner__icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <span class="contact-banner__label"><a href="mailto:donorrelations@icscanada.edu">donorrelations@icscanada.edu</a></span>
+          </div>
+          <div class="contact-banner__item">
+            <div class="contact-banner__icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <span class="contact-banner__label"><a href="tel:+14169792331,223">1-416-979-2331 x223</a></span>
+          </div>
         </div>
       </div>
     </div>
