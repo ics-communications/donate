@@ -1,0 +1,3 @@
+monthly-copy/monthly-info.txt
+*.md
+!README.md
