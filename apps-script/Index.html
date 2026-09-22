@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<base target="_top">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICS Monthly Campaign Tracker</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --wine: #9B0D24;
+    --wine-deep: #7A0A1C;
+    --accent: #A85A32;
+    --accent-muted: #8E4A28;
+    --cream: #FDFBF7;
+    --cream-warm: #F9F5ED;
+    --text-dark: #2E1318;
+    --text-body: #3A3330;
+    --text-muted: #857E78;
+    --border: rgba(155,13,36,0.12);
+    --green: #2F6B4F;
+    --sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --serif: 'Libre Baskerville', Georgia, serif;
+  }
+
+  body { font-family: var(--sans); background: var(--cream); color: var(--text-body); line-height: 1.6; font-size: 14px; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  header { border-bottom: 2px solid var(--wine); padding-bottom: 1.2rem; margin-bottom: 2rem; }
+  .eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-muted); }
+  h1 { font-family: var(--serif); font-size: 1.5rem; color: var(--wine); font-weight: 700; margin-top: 0.3rem; }
+  .sub { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+  h2 { font-family: var(--serif); font-size: 1.05rem; color: var(--wine); margin-bottom: 0.2rem; }
+  .hint { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .stat { background: #fff; border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 1.1rem 1.2rem; }
+  .stat__label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+  .stat__value { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; color: var(--wine); line-height: 1.1; margin-top: 0.3rem; }
+  .stat--good { border-top-color: var(--green); }
+  .stat--good .stat__value { color: var(--green); }
+
+  .card { background: #fff; border: 1px solid var(--border); padding: 1.5rem; margin-bottom: 1.5rem; }
+
+  .btn { font-family: var(--sans); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.7rem 1.3rem; min-height: 42px; border: none; cursor: pointer; background: var(--wine); color: var(--cream); transition: background 0.25s ease; }
+  .btn:hover:not(:disabled) { background: var(--wine-deep); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn--ghost { background: transparent; color: var(--wine); border: 1px solid var(--wine); }
+  .btn--ghost:hover:not(:disabled) { background: var(--wine); color: var(--cream); }
+  .btn-row { display: flex; gap: 0.7rem; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
+
+  input[type=file] { font-family: var(--sans); font-size: 0.85rem; padding: 0.6rem; border: 1px dashed var(--border); background: var(--cream-warm); width: 100%; cursor: pointer; }
+
+  .msg { font-size: 0.85rem; padding: 0.8rem 1rem; margin-top: 1rem; border-left: 3px solid var(--text-muted); background: var(--cream-warm); display: none; }
+  .msg.show { display: block; }
+  .msg.ok { border-left-color: var(--green); color: var(--green); }
+  .msg.err { border-left-color: var(--wine); color: var(--wine); }
+  .msg.busy { border-left-color: var(--accent); color: var(--accent-muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  th { text-align: left; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); }
+  td { padding: 0.55rem 0.6rem; border-bottom: 1px solid rgba(0,0,0,0.04); }
+  .table-scroll { overflow-x: auto; max-height: 340px; overflow-y: auto; margin-top: 1rem; }
+
+  .note { font-size: 0.78rem; color: var(--text-muted); background: var(--cream-warm); border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin-top: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Institute for Christian Studies &middot; Internal</p>
+    <h1>Monthly Campaign Tracker</h1>
+    <p class="sub" id="campaignName">Loading&hellip;</p>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats" id="stats"></div>
+
+  <!-- FOLLOW-UP LIST -->
+  <div class="card">
+    <h2>Who still needs a follow-up</h2>
+    <p class="hint">Everyone on the list who has not converted, opted out, or bounced. Export this before each send.</p>
+    <div class="btn-row">
+      <button class="btn" id="btnRefresh">Refresh list</button>
+      <button class="btn btn--ghost" id="btnDownload">Download CSV</button>
+      <button class="btn btn--ghost" id="btnMarkSent">Mark send as done</button>
+    </div>
+    <div class="msg" id="msgList"></div>
+    <div class="table-scroll" id="listTable"></div>
+  </div>
+
+  <!-- DONORPERFECT -->
+  <div class="card">
+    <h2>DonorPerfect sync</h2>
+    <p class="hint">
+      Pulls every gift carrying thank-you code <strong id="tyCode">8</strong> and suppresses those donors.
+      This is what catches cheques and anything else entered by hand. Runs automatically each morning;
+      use the button to pull now.
+    </p>
+    <div class="btn-row">
+      <button class="btn" id="btnSync">Sync from DonorPerfect</button>
+    </div>
+    <div class="msg" id="msgSync"></div>
+  </div>
+
+  <!-- CANADAHELPS -->
+  <div class="card">
+    <h2>CanadaHelps batch drop</h2>
+    <p class="hint">
+      Upload a CanadaHelps export (Donations &rarr; Custom Data Download). Everyone in the file is
+      marked converted. Rows without an email land in the Unmatched tab for review.
+    </p>
+    <input type="file" id="fileCH" accept=".csv,text/csv">
+    <div class="btn-row">
+      <button class="btn" id="btnCH" disabled>Import CanadaHelps CSV</button>
+    </div>
+    <div class="msg" id="msgCH"></div>
+  </div>
+
+  <!-- MAILING LIST -->
+  <div class="card">
+    <h2>Import a mailing list</h2>
+    <p class="hint">
+      Needs an email column; first and last name are used when present. Re-importing is safe —
+      existing people keep their status and follow-up counts, and only new emails are added.
+      Use this for the launch list and for each future campaign.
+    </p>
+    <input type="file" id="fileList" accept=".csv,text/csv">
+    <div class="btn-row">
+      <button class="btn" id="btnList" disabled>Import mailing list CSV</button>
+    </div>
+    <div class="msg" id="msgList2"></div>
+  </div>
+
+  <p class="note">
+    This tool records and reports only &mdash; it never emails donors. Acknowledgements are handled by
+    the separate ICS system, so nothing here will produce a duplicate message.
+  </p>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var $ = function(id) { return document.getElementById(id); };
+
+  function say(el, text, kind) {
+    el.textContent = text;
+    el.className = 'msg show ' + (kind || '');
+  }
+
+  function busy(el, text) { say(el, text, 'busy'); }
+
+  function errText(err) {
+    return (err && err.message) ? err.message : String(err);
+  }
+
+  /* ---------- Stats ---------- */
+
+  function renderStats(s) {
+    $('campaignName').textContent = s.campaign + ' · thank-you code ' + s.tyCode;
+    $('tyCode').textContent = s.tyCode;
+
+    var cards = [
+      { label: 'On the list', value: s.total },
+      { label: 'Still to follow up', value: s.active },
+      { label: 'Converted', value: s.converted, good: true },
+      { label: 'Conversion rate', value: s.conversionRate + '%', good: true },
+      { label: 'Opted out / bounced', value: s.excluded }
+    ];
+
+    $('stats').innerHTML = cards.map(function(c) {
+      return '<div class="stat' + (c.good ? ' stat--good' : '') + '">' +
+             '<div class="stat__label">' + c.label + '</div>' +
+             '<div class="stat__value">' + c.value + '</div></div>';
+    }).join('');
+  }
+
+  function loadStats() {
+    google.script.run
+      .withSuccessHandler(renderStats)
+      .withFailureHandler(function(err) {
+        $('campaignName').textContent = 'Could not load stats: ' + errText(err);
+      })
+      .getStats();
+  }
+
+  /* ---------- Follow-up list ---------- */
+
+  function renderList(people) {
+    if (!people.length) {
+      $('listTable').innerHTML = '<p class="hint" style="margin-top:1rem">' +
+        'Nobody is waiting on a follow-up. Either the list is empty or everyone has converted.</p>';
+      return;
+    }
+    var rows = people.map(function(p) {
+      return '<tr><td>' + esc(p.email) + '</td><td>' + esc(p.firstName) + '</td>' +
+             '<td>' + esc(p.lastName) + '</td><td>' + p.followUpsSent + '</td>' +
+             '<td>' + esc(p.lastSent) + '</td></tr>';
+    }).join('');
+
+    $('listTable').innerHTML =
+      '<table><thead><tr><th>Email</th><th>First</th><th>Last</th>' +
+      '<th>Sends</th><th>Last sent</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+
+  function esc(v) {
+    return String(v == null ? '' : v)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function loadList() {
+    busy($('msgList'), 'Loading…');
+    google.script.run
+      .withSuccessHandler(function(people) {
+        renderList(people);
+        say($('msgList'), people.length + ' people still to follow up with.', 'ok');
+        loadStats();
+      })
+      .withFailureHandler(function(err) { say($('msgList'), errText(err), 'err'); })
+      .getFollowUpList();
+  }
+
+  $('btnRefresh').addEventListener('click', loadList);
+
+  $('btnDownload').addEventListener('click', function() {
+    busy($('msgList'), 'Building CSV…');
+    google.script.run
+      .withSuccessHandler(function(csv) {
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'ics-monthly-followup-' + new Date().toISOString().slice(0, 10) + '.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        say($('msgList'), 'CSV downloaded.', 'ok');
+      })
+      .withFailureHandler(function(err) { say($('msgList'), errText(err), 'err'); })
+      .getFollowUpCsv();
+  });
+
+  $('btnMarkSent').addEventListener('click', function() {
+    if (!confirm('Record that a follow-up went out to everyone currently on the list?\n\n' +
+                 'This only updates the tracker. It does not send anything.')) { return; }
+    busy($('msgList'), 'Recording…');
+    google.script.run
+      .withSuccessHandler(function(r) {
+        say($('msgList'), 'Recorded a send for ' + r.stamped + ' people.', 'ok');
+        loadList();
+      })
+      .withFailureHandler(function(err) { say($('msgList'), errText(err), 'err'); })
+      .markFollowUpSent();
+  });
+
+  /* ---------- DonorPerfect ---------- */
+
+  $('btnSync').addEventListener('click', function() {
+    var btn = this;
+    btn.disabled = true;
+    busy($('msgSync'), 'Querying DonorPerfect…');
+
+    google.script.run
+      .withSuccessHandler(function(r) {
+        say($('msgSync'),
+          r.giftsFound + ' gifts found · ' + r.suppressed + ' newly suppressed · ' +
+          r.alreadyKnown + ' already recorded · ' + r.notOnList + ' not on the list' +
+          (r.missingEmail ? ' · ' + r.missingEmail + ' with no email (see Unmatched tab)' : ''),
+          'ok');
+        btn.disabled = false;
+        loadList();
+      })
+      .withFailureHandler(function(err) {
+        say($('msgSync'), errText(err), 'err');
+        btn.disabled = false;
+      })
+      .syncDonorPerfect();
+  });
+
+  /* ---------- CSV uploads ---------- */
+
+  function wireUpload(fileId, btnId, msgId, serverFn, describe) {
+    var file = $(fileId), btn = $(btnId), msg = $(msgId);
+
+    file.addEventListener('change', function() {
+      btn.disabled = !file.files.length;
+      msg.className = 'msg';
+    });
+
+    btn.addEventListener('click', function() {
+      if (!file.files.length) { return; }
+      btn.disabled = true;
+      busy(msg, 'Reading file…');
+
+      var reader = new FileReader();
+      reader.onload = function() {
+        busy(msg, 'Importing… this can take a moment for a large file.');
+        google.script.run
+          .withSuccessHandler(function(r) {
+            say(msg, describe(r), 'ok');
+            btn.disabled = false;
+            file.value = '';
+            loadList();
+          })
+          .withFailureHandler(function(err) {
+            say(msg, errText(err), 'err');
+            btn.disabled = false;
+          })[serverFn](reader.result);
+      };
+      reader.onerror = function() {
+        say(msg, 'Could not read that file.', 'err');
+        btn.disabled = false;
+      };
+      reader.readAsText(file.files[0]);
+    });
+  }
+
+  wireUpload('fileCH', 'btnCH', 'msgCH', 'importCanadaHelps', function(r) {
+    return r.rowsRead + ' rows read · ' + r.suppressed + ' suppressed · ' +
+           r.notOnList + ' not on the list' +
+           (r.missingEmail ? ' · ' + r.missingEmail + ' with no email (see Unmatched tab)' : '');
+  });
+
+  wireUpload('fileList', 'btnList', 'msgList2', 'importMailingList', function(r) {
+    return r.totalRows + ' rows read · ' + r.added + ' added · ' +
+           r.updatedNames + ' names filled in · ' + r.skippedNoEmail + ' skipped (no email)' +
+           (r.reconciled ? ' · ' + r.reconciled + ' already-converted matched up' : '');
+  });
+
+  /* ---------- Boot ---------- */
+  loadStats();
+  loadList();
+
+})();
+</script>
+</body>
+</html>

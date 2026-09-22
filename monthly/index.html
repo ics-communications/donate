@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Give Monthly | Institute for Christian Studies</title>
+<meta name="description" content="Become a monthly supporter of the Institute for Christian Studies. Canadian donors give through CanadaHelps with automatic tax receipts; U.S. donors give through Friends of ICS via PayPal.">
+<link rel="canonical" href="https://donate.icscanada.edu/monthly/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#7A0A1C">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Institute for Christian Studies">
+<meta property="og:title" content="Sustain a Spacious Faith Monthly">
+<meta property="og:description" content="Help sustain a place where people can learn, belong, and grow into faithful leaders for the church and the wider world.">
+<meta property="og:url" content="https://donate.icscanada.edu/monthly/">
+<meta property="og:image" content="https://donate.icscanada.edu/assets/monthly-hero.jpg">
+<meta property="og:locale" content="en_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sustain a Spacious Faith Monthly">
+<meta name="twitter:description" content="Help sustain a place where people can learn, belong, and grow into faithful leaders for the church and the wider world.">
+<meta name="twitter:image" content="https://donate.icscanada.edu/assets/monthly-hero.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   RESET & VARIABLES
+   ================================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --wine:        #9B0D24;
+  --wine-deep:   #7A0A1C;
+  --wine-mid:    #BE0B28;
+  --wine-soft:   #D44B5E;
+
+  --accent:       #A85A32;
+  --accent-light: #C87A52;
+  --accent-muted: #8E4A28;
+  --accent-pale:  #EEDACA;
+  --accent-deep:  #7A4020;
+
+  --teal:         #7A5C3A;
+  --teal-light:   #A07A4E;
+  --teal-muted:   #6B4E30;
+  --teal-pale:    #E6D9C6;
+  --teal-deep:    #5A4228;
+
+  --cream:       #FDFBF7;
+  --cream-warm:  #F9F5ED;
+  --parchment:   #F0E9DD;
+  --text-dark:   #2E1318;
+  --text-body:   #3A3330;
+  --text-muted:  #857E78;
+  --text-on-dark:#E8C2C2;
+  --border-light:rgba(155,13,36,0.08);
+
+  --serif: 'Libre Baskerville', Georgia, serif;
+  --sans:  'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --ease:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html { scroll-behavior: smooth; font-size: 110%; }
+body {
+  font-family: var(--sans); color: var(--text-body); background: var(--cream);
+  line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── SHARED ── */
+.eyebrow { font-family: var(--sans); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-muted); }
+.section-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--wine); line-height: 1.2; }
+.btn { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.75rem 1.6rem; border: none; cursor: pointer; transition: all 0.35s var(--ease); min-height: 44px; }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(168,90,50,0.3); }
+.btn-arrow::after { content: '\2192'; transition: transform 0.3s ease; display: inline-block; }
+.btn-arrow:hover::after { transform: translateX(3px); }
+.btn-arrow--down::after { content: '\2193'; }
+.btn-arrow--down:hover::after { transform: translateY(3px); }
+.accent-rule { height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 50%, transparent); }
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 42vh; display: flex; align-items: center; background: var(--wine-deep); overflow: hidden; padding: 5rem 0 4rem; }
+.hero__bg { position: absolute; inset: 0; }
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.25) brightness(0.7); }
+.hero__overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 90%, rgba(168,90,50,0.08) 0%, transparent 50%), radial-gradient(ellipse at 85% 15%, rgba(168,90,50,0.05) 0%, transparent 45%), linear-gradient(160deg, rgba(122,10,28,0.91) 0%, rgba(122,10,28,0.75) 100%); }
+.hero__accent-rule { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 40%, transparent 80%); z-index: 10; }
+.hero__content { position: relative; z-index: 5; width: 100%; }
+.hero__inner { max-width: 700px; }
+.hero__back { display: inline-flex; align-items: center; gap: 0.45rem; font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light); padding: 0.5rem 0; margin-bottom: 1.25rem; transition: color 0.25s var(--ease); min-height: 44px; }
+.hero__back::before { content: '\2190'; font-size: 0.95rem; line-height: 1; transition: transform 0.3s ease; display: inline-block; }
+.hero__back:hover { color: var(--cream); }
+.hero__back:hover::before { transform: translateX(-3px); }
+.hero__eyebrow { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; color: var(--accent-light); letter-spacing: 0.06em; margin-bottom: 0.75rem; opacity: 0.9; }
+.hero__title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; color: var(--cream); line-height: 1.12; margin-bottom: 1.1rem; }
+.hero__title em { font-style: italic; color: var(--accent-light); }
+.hero__subtitle { font-family: var(--sans); font-size: 1.02rem; font-weight: 300; color: var(--text-on-dark); line-height: 1.75; max-width: 560px; }
+
+/* ── DONATE INTRO ── */
+.donate-intro { padding: 4rem 0 3rem; }
+.donate-intro__inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.donate-intro__body { font-size: 0.95rem; color: var(--text-body); line-height: 1.75; margin-top: 1rem; }
+.donate-intro__body a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.donate-intro__body a:hover { color: var(--accent); }
+
+/* ── DONATION CARDS ── */
+.donate-grid { padding: 0 0 5rem; }
+.donate-grid__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.donate-card { background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); padding: 2.5rem 2rem 2rem; display: flex; flex-direction: column; transition: all 0.4s var(--ease); }
+.donate-card:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(155,13,36,0.07); }
+.donate-card--teal { border-top-color: var(--teal); }
+.donate-card--teal:hover { border-top-color: var(--teal-deep); }
+.donate-card__eyebrow { font-family: var(--sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-muted); margin-bottom: 0.5rem; }
+.donate-card--teal .donate-card__eyebrow { color: var(--teal-muted); }
+.donate-card__title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--wine); line-height: 1.25; margin-bottom: 0.8rem; }
+.donate-card__desc { font-size: 0.9rem; color: var(--text-body); line-height: 1.65; margin-bottom: 1.5rem; flex-grow: 1; }
+.donate-card__desc a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.donate-card__desc a:hover { color: var(--accent); }
+.donate-card__btn-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.donate-card__divider { height: 1px; background: var(--border-light); margin: 0 0 1.2rem; }
+.donate-card__alt-title { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem; }
+.donate-card__address { font-size: 0.88rem; color: var(--text-body); line-height: 1.6; font-style: normal; }
+.donate-card__address strong { font-weight: 600; color: var(--text-dark); }
+
+/* ── CANADAHELPS EMBEDDED FORM ── */
+.donate-form-section { padding: 0 0 5rem; }
+.donate-form { max-width: 500px; margin: 0 auto; background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--wine); overflow: hidden; }
+.donate-form__header { background: var(--wine-deep); padding: 2rem 2rem 1.8rem; text-align: center; position: relative; overflow: hidden; }
+.donate-form__header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(168,90,50,0.08) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(168,90,50,0.05) 0%, transparent 50%); pointer-events: none; }
+.donate-form__header-content { position: relative; }
+.donate-form__header-eyebrow { font-family: var(--sans); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.4rem; }
+.donate-form__header-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--cream); line-height: 1.25; margin-bottom: 0.3rem; }
+.donate-form__header-sub { font-size: 0.78rem; color: var(--text-on-dark); font-weight: 300; }
+.donate-form__embed { position: relative; background: #fff; min-height: 480px; }
+.donate-form__embed iframe { display: block; width: 100% !important; max-width: 100%; border: 0; }
+.donate-form__loading { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; background: #fff; transition: opacity 0.4s ease; }
+.donate-form__loading.hidden { opacity: 0; pointer-events: none; }
+.donate-form__spinner { width: 34px; height: 34px; border: 3px solid rgba(155,13,36,0.12); border-top-color: var(--wine); border-radius: 50%; animation: ch-spin 0.9s linear infinite; }
+@keyframes ch-spin { to { transform: rotate(360deg); } }
+.donate-form__loading-text { font-size: 0.8rem; color: var(--text-muted); }
+.donate-form__fallback { display: none; font-size: 0.88rem; color: var(--text-body); text-align: center; padding: 0 1.5rem; line-height: 1.7; }
+.donate-form__fallback a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+.donate-form__fallback a:hover { color: var(--accent); }
+.donate-form__loading.stalled .donate-form__spinner,
+.donate-form__loading.stalled .donate-form__loading-text { display: none; }
+.donate-form__loading.stalled .donate-form__fallback { display: block; }
+
+.donate-form__footer { padding: 0.8rem 2rem; text-align: center; border-top: 1px solid var(--border-light); background: rgba(155,13,36,0.02); }
+.donate-form__secure { font-size: 0.68rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
+.donate-form__secure svg { width: 12px; height: 12px; stroke: var(--text-muted); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.donate-form__secure a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+.donate-form__secure a:hover { color: var(--accent); }
+
+/* ── CONTACT BANNER ── */
+.contact-banner { position: relative; padding: 3.5rem 0; background: var(--wine); overflow: hidden; }
+.contact-banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(168,90,50,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(168,90,50,0.04) 0%, transparent 60%); pointer-events: none; }
+.contact-banner__content { position: relative; text-align: center; max-width: 640px; margin: 0 auto; }
+.contact-banner__eyebrow { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.8rem; }
+.contact-banner__title { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700; color: var(--cream); line-height: 1.35; margin-bottom: 1rem; }
+.contact-banner__body { font-size: 0.92rem; color: var(--text-on-dark); line-height: 1.7; margin-bottom: 1.5rem; }
+.contact-banner__details { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+.contact-banner__item { display: flex; align-items: center; gap: 0.6rem; }
+.contact-banner__icon { width: 36px; height: 36px; background: rgba(168,90,50,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent-light); }
+.contact-banner__icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact-banner__label { font-size: 0.82rem; color: var(--cream); font-weight: 500; }
+.contact-banner__label a { color: var(--accent-light); text-decoration: underline; text-underline-offset: 2px; }
+.contact-banner__label a:hover { color: #fff; }
+
+/* ── FOOTER ── */
+.site-footer { background: var(--wine-deep); padding: 3.5rem 0 2rem; color: var(--text-on-dark); border-top: 1px solid rgba(168,90,50,0.12); }
+.footer__grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+.footer__brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--cream); margin-bottom: 0.75rem; }
+.footer__desc { font-size: 0.82rem; line-height: 1.7; margin-bottom: 1.2rem; max-width: 280px; }
+.footer__address { font-size: 0.82rem; line-height: 1.7; font-style: normal; }
+.footer__heading { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 1.2rem; }
+.footer__links { list-style: none; }
+.footer__links li { margin-bottom: 0.6rem; }
+.footer__links a { font-size: 0.85rem; color: var(--text-on-dark); transition: color 0.2s ease; display: inline-block; padding: 0.15rem 0; }
+.footer__links a:hover { color: var(--accent-light); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(212,172,172,0.5); }
+.footer__social { display: flex; gap: 0.6rem; }
+.footer__social a { width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--text-on-dark); transition: all 0.2s ease; }
+.footer__social a:hover { border-color: var(--accent-light); color: var(--accent-light); }
+.footer__social .social-substack { font-size: 0.6rem; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ── ANIMATION ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) { .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+@media (max-width: 768px) {
+  html { font-size: 100%; }
+  .container { padding: 0 1.25rem; }
+  .hero { min-height: auto; padding: 2.5rem 0 2rem; }
+  .hero__title { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .hero__subtitle { font-size: 0.92rem; }
+  .donate-intro { padding: 3rem 0 2rem; }
+  .donate-grid__inner { grid-template-columns: 1fr; }
+  .donate-card { padding: 2rem 1.4rem 1.6rem; }
+  .donate-form-section { padding: 0 0 3.5rem; }
+  .donate-form__header { padding: 1.5rem; }
+  .donate-form__footer { padding: 0.8rem 1.5rem; }
+  .contact-banner { padding: 2.5rem 0; }
+  .contact-banner__details { flex-direction: column; align-items: center; }
+  .site-footer { padding: 2.5rem 0 1.5rem; }
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer__desc { max-width: 100%; }
+  .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .footer__social { justify-content: center; }
+  .footer__social a { width: 40px; height: 40px; }
+}
+@media (max-width: 480px) {
+  html { font-size: 95%; }
+  .container { padding: 0 1rem; }
+  .hero { padding: 2rem 0 1.8rem; }
+  .hero__title { font-size: 1.6rem; }
+  .hero__subtitle { font-size: 0.86rem; }
+  .donate-card__title { font-size: 1.15rem; }
+  .donate-form__header { padding: 1.3rem; }
+  .donate-form__header-title { font-size: 1.15rem; }
+}
+@media (max-width: 360px) { html { font-size: 90%; } .container { padding: 0 0.85rem; } .hero__title { font-size: 1.4rem; } }
+@media (hover: none) { .donate-card:hover { transform: none; box-shadow: none; } .btn:active { transform: scale(0.97); opacity: 0.9; } }
+@supports (padding: env(safe-area-inset-bottom)) { .site-footer { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); } .hero { padding-top: calc(5rem + env(safe-area-inset-top)); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } .btn, .donate-card { transition: none; } .donate-form__spinner { animation: none; } }
+
+/* ── MONTHLY CAMPAIGN ADDITIONS ─────────────────────────────── */
+
+/* Hero framing: the source photo has its subjects in the upper-middle band,
+   so shift the cover crop up from centre. Lower percentage = more of the top. */
+.hero__bg img { object-position: center 20%; }
+
+
+/* Intro + narrative */
+.m-narrative { padding: 4.5rem 0 1rem; }
+.m-narrative__inner { max-width: 760px; margin: 0 auto; }
+.m-narrative h2 { font-family: var(--serif); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: var(--wine); line-height: 1.25; margin: 2.6rem 0 1rem; }
+.m-narrative h2:first-child { margin-top: 0; }
+.m-narrative p { font-size: 1rem; color: var(--text-body); margin-bottom: 1.1rem; }
+.m-narrative p.lead { font-size: 1.1rem; color: var(--text-dark); font-weight: 400; }
+
+/* Three-up impact */
+.m-impact { padding: 3.5rem 0 4rem; background: var(--cream-warm); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+.m-impact__intro { max-width: 760px; margin: 0 auto 2.5rem; text-align: center; }
+.m-impact__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.8rem; max-width: 1000px; margin: 0 auto; }
+.m-impact__item { background: var(--cream); border: 1px solid var(--border-light); border-top: 3px solid var(--accent); padding: 1.8rem 1.6rem; }
+.m-impact__title { font-family: var(--sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-muted); margin-bottom: 0.7rem; }
+.m-impact__body { font-size: 0.92rem; color: var(--text-body); }
+
+/* Give section shell */
+.m-give { padding: 4.5rem 0 5rem; }
+.m-give__head { text-align: center; max-width: 720px; margin: 0 auto 2.5rem; }
+.m-give__head .section-title { margin-bottom: 0.8rem; }
+.m-give__head p { font-size: 0.98rem; color: var(--text-body); }
+
+/* Country switch */
+.m-switch { display: flex; justify-content: center; gap: 0; margin: 0 auto 2.5rem; max-width: 460px; border: 1px solid var(--border-light); background: var(--cream-warm); padding: 0.3rem; }
+.m-switch__btn { flex: 1; font-family: var(--sans); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.85rem 0.8rem; min-height: 44px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s var(--ease); }
+.m-switch__btn:hover { color: var(--wine); }
+.m-switch__btn[aria-selected="true"] { background: var(--wine); color: var(--cream); }
+.m-switch__note { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin: -1.6rem auto 2.4rem; max-width: 520px; }
+
+/* Shared form shell — mirrors .donate-form from the main page */
+.m-form { max-width: 500px; margin: 0 auto; background: var(--cream-warm); border: 1px solid var(--border-light); border-top: 3px solid var(--wine); overflow: hidden; }
+.m-form__header { background: var(--wine-deep); padding: 2rem 2rem 1.8rem; text-align: center; position: relative; overflow: hidden; }
+.m-form__header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(168,90,50,0.08) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(168,90,50,0.05) 0%, transparent 50%); pointer-events: none; }
+.m-form__header-content { position: relative; }
+.m-form__header-eyebrow { font-family: var(--sans); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 0.4rem; }
+.m-form__header-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: var(--cream); line-height: 1.25; margin-bottom: 0.3rem; }
+.m-form__header-sub { font-size: 0.78rem; color: var(--text-on-dark); font-weight: 300; }
+.m-form__body { background: #fff; padding: 1.8rem 1.8rem 1.6rem; }
+.m-form__footer { padding: 0.8rem 2rem; text-align: center; border-top: 1px solid var(--border-light); background: rgba(155,13,36,0.02); }
+.m-form__secure { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.7rem; color: var(--text-muted); }
+.m-form__secure svg { width: 13px; height: 13px; fill: none; stroke: var(--text-muted); stroke-width: 2; }
+.m-form__secure a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
+
+/* CanadaHelps embed (same behaviour as the main donate page) */
+.m-form__embed { position: relative; background: #fff; min-height: 480px; }
+.m-form__embed iframe { display: block; width: 100% !important; max-width: 100%; border: 0; }
+.m-form__loading { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; background: #fff; transition: opacity 0.4s ease; }
+.m-form__loading.hidden { opacity: 0; pointer-events: none; }
+.m-form__spinner { width: 34px; height: 34px; border: 3px solid rgba(155,13,36,0.12); border-top-color: var(--wine); border-radius: 50%; animation: ch-spin 0.9s linear infinite; }
+.m-form__loading-text { font-size: 0.8rem; color: var(--text-muted); }
+.m-form__fallback { display: none; font-size: 0.88rem; color: var(--text-body); text-align: center; padding: 0 1.5rem; line-height: 1.7; }
+.m-form__fallback a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+.m-form__loading.stalled .m-form__spinner,
+.m-form__loading.stalled .m-form__loading-text { display: none; }
+.m-form__loading.stalled .m-form__fallback { display: block; }
+
+/* PayPal form internals */
+.m-field-group { margin-bottom: 1.3rem; }
+.m-label { display: block; font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.55rem; }
+.m-amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+.m-amount { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; color: var(--text-dark); background: var(--cream-warm); border: 1px solid var(--border-light); padding: 0.8rem 0.4rem; min-height: 46px; cursor: pointer; transition: all 0.25s var(--ease); }
+.m-amount:hover { border-color: var(--wine); color: var(--wine); }
+.m-amount[aria-pressed="true"] { background: var(--wine); border-color: var(--wine); color: var(--cream); }
+.m-other-wrap { margin-top: 0.6rem; position: relative; }
+.m-other-wrap[hidden] { display: none; }
+.m-other-prefix { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); font-size: 0.95rem; font-weight: 600; color: var(--text-muted); pointer-events: none; }
+.m-input, .m-other { width: 100%; font-family: var(--sans); font-size: 0.92rem; color: var(--text-dark); background: #fff; border: 1px solid var(--border-light); padding: 0.75rem 0.85rem; min-height: 44px; transition: border-color 0.25s var(--ease); }
+.m-other { padding-left: 1.9rem; }
+.m-input:focus, .m-other:focus { outline: none; border-color: var(--wine); }
+.m-input.is-invalid, .m-other.is-invalid { border-color: var(--wine-mid); background: rgba(190,11,40,0.03); }
+.m-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+.m-total { text-align: center; font-family: var(--serif); font-size: 1.05rem; color: var(--wine); padding: 0.9rem 0 0.2rem; border-top: 1px solid var(--border-light); margin-top: 0.4rem; }
+.m-total strong { font-size: 1.3rem; }
+.m-error { display: none; font-size: 0.85rem; color: var(--wine-mid); background: rgba(190,11,40,0.05); border-left: 3px solid var(--wine-mid); padding: 0.7rem 0.9rem; margin-bottom: 1rem; }
+.m-error.is-active { display: block; }
+.m-paypal { margin-top: 1.2rem; min-height: 52px; }
+.m-paypal__loading { font-size: 0.82rem; color: var(--text-muted); text-align: center; padding: 1rem 0; }
+.m-confirm { display: none; text-align: center; padding: 2.5rem 1.5rem; }
+.m-confirm.is-active { display: block; }
+.m-confirm__mark { width: 46px; height: 46px; margin: 0 auto 1.1rem; border-radius: 50%; background: var(--wine); display: flex; align-items: center; justify-content: center; }
+.m-confirm__mark svg { width: 22px; height: 22px; fill: none; stroke: var(--cream); stroke-width: 2.5; }
+.m-confirm__title { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--wine); margin-bottom: 0.7rem; }
+.m-confirm__body { font-size: 0.92rem; color: var(--text-body); max-width: 340px; margin: 0 auto 0.8rem; }
+.m-confirm__ref { font-size: 0.74rem; color: var(--text-muted); letter-spacing: 0.04em; }
+
+@media (max-width: 560px) {
+  .m-amounts { grid-template-columns: repeat(2, 1fr); }
+  .m-row { grid-template-columns: 1fr; }
+  .m-form__body { padding: 1.4rem 1.2rem 1.2rem; }
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Stacked variant: two forms side by side on wide screens */
+.m-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 2.5rem; align-items: start; max-width: 1080px; margin: 0 auto; }
+.m-stack .m-form { max-width: 500px; width: 100%; margin: 0 auto; }
+@media (max-width: 900px) { .m-stack { grid-template-columns: 1fr; gap: 3rem; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__accent-rule"></div>
+  <div class="hero__bg">
+    <img src="../assets/monthly-hero.jpg" alt="">
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content container">
+    <div class="hero__inner">
+      <a href="https://icscanada.edu" class="hero__back">Back to ICS Home</a>
+      <p class="hero__eyebrow">Institute for Christian Studies</p>
+      <h1 class="hero__title">Sustain a <em>Spacious Faith</em> Monthly</h1>
+      <p class="hero__subtitle">Help sustain a place where people can learn, belong, and grow into faithful leaders for the church and the wider world.</p>
+      <div style="margin-top:1.8rem">
+        <a href="#give" class="btn btn-accent btn-arrow btn-arrow--down">Give Monthly</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NARRATIVE -->
+<section class="m-narrative">
+  <div class="container">
+    <div class="m-narrative__inner reveal">
+
+      <h2>People Need Places Where Faith and Learning Grow Together</h2>
+      <p>We live in a divided world where suspicion, exclusion, and cultural pressure strain communities, institutions, and even churches.</p>
+      <p>Many Christians are looking for something deeper: a faith that is spiritually grounded, intellectually serious, and spacious enough for honest questions, meaningful relationships, and people who need a place to belong.</p>
+
+      <h2>A Community Forming Faithful Leaders</h2>
+      <p>Since 1967, the Institute for Christian Studies has been a community where people can deepen their Christian imagination, strengthen their engagement with the world, and prepare for faithful service to the common good.</p>
+      <p>Through faith-based graduate education, research, and public learning, students and community members encounter a faith that engages the questions of our time while remaining rooted in grace, humility, justice, and hope.</p>
+
+      <h2>This Community Needs People Who Sustain It</h2>
+      <p>The work of formation is ongoing. New students arrive, graduates continue into lives of service, and people return to learn, wrestle with new questions, and reconnect with a community that has helped shape them. And there are always others still searching for a place where faith, learning, and belonging can grow together.</p>
+      <p class="lead">That&rsquo;s why monthly supporters are so important.</p>
+      <p>Our monthly supporters are people like you who know firsthand how meaningful a community like ICS can be. By giving each month, you can ensure others have that same place to learn, belong, ask honest questions, and grow in faith.</p>
+
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="m-impact">
+  <div class="container">
+    <div class="m-impact__intro reveal">
+      <h2 class="section-title">Your dependable support helps ICS welcome people today and prepare for those who will arrive tomorrow.</h2>
+    </div>
+    <div class="m-impact__grid">
+      <div class="m-impact__item reveal">
+        <p class="m-impact__title">Welcome People Into the Community</p>
+        <p class="m-impact__body">Your monthly support helps provide scholarships that make rigorous and hospitable Christian learning accessible to people seeking a place to grow in faith and wisdom.</p>
+      </div>
+      <div class="m-impact__item reveal">
+        <p class="m-impact__title">Form Leaders for Years to Come</p>
+        <p class="m-impact__body">Your ongoing giving supports the careful work of educating and mentoring teachers, pastors, and public leaders who will serve their communities for decades.</p>
+      </div>
+      <div class="m-impact__item reveal">
+        <p class="m-impact__title">Sustain the Work for the Future</p>
+        <p class="m-impact__body">Recurring gifts provide the stability ICS needs to strengthen student support, expand public learning, and maintain the people and infrastructure that make this community possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NARRATIVE (close) -->
+<section class="m-narrative" style="padding-top:4rem">
+  <div class="container">
+    <div class="m-narrative__inner reveal">
+      <h2>Help Keep This Space Growing</h2>
+      <p>Without dependable support, it becomes harder to welcome new students, expand learning opportunities, and sustain the community that people return to year after year.</p>
+      <p>With a strong community of monthly donors, ICS can plan with confidence. More people can discover a place where questions are welcomed, faith is renewed through serious study, and leaders are prepared to serve with rigour, humility, and courage.</p>
+      <p class="lead"><strong>Set up your monthly gift today and become part of the community sustaining a spacious faith for a divided world.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- GIVE -->
+<section class="m-give" id="give">
+  <div class="container">
+
+    <div class="m-give__head reveal">
+      <p class="eyebrow">Become a Monthly Supporter</p>
+      <h2 class="section-title">Set Up Your Monthly Gift</h2>
+      <p>Choose where you file your taxes. Canadian donors give through CanadaHelps; U.S. donors give through Friends of ICS, our American charitable foundation.</p>
+    </div>
+
+    <div class="m-switch reveal" role="tablist" aria-label="Choose your country">
+      <button type="button" class="m-switch__btn" id="tabCA" role="tab" aria-selected="true" aria-controls="panelCA">I give in Canada</button>
+      <button type="button" class="m-switch__btn" id="tabUS" role="tab" aria-selected="false" aria-controls="panelUS">I give in the U.S.</button>
+    </div>
+    <p class="m-switch__note" id="switchNote">Canadian donors receive an automatic CanadaHelps tax receipt.</p>
+
+    <div class="reveal">
+      <div id="panelCA" role="tabpanel" aria-labelledby="tabCA">
+        <div class="m-form">
+          <div class="m-form__header">
+            <div class="m-form__header-content">
+              <p class="m-form__header-eyebrow">Secure Monthly Giving &middot; Canada</p>
+              <h2 class="m-form__header-title">Give Monthly (CanadaHelps)</h2>
+              <p class="m-form__header-sub">Canadian tax receipts issued automatically through CanadaHelps</p>
+            </div>
+          </div>
+
+          <div class="m-form__embed" id="chEmbedMount">
+            <div class="m-form__loading" id="chLoading" role="status" aria-live="polite">
+              <div class="m-form__spinner" aria-hidden="true"></div>
+              <p class="m-form__loading-text">Loading the secure donation form&hellip;</p>
+              <p class="m-form__fallback">The form is taking longer than expected to load. You can <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/149520">give directly on CanadaHelps</a> &mdash; same form, same tax receipt.</p>
+            </div>
+            <script id="ch_cdn_embed" type="text/javascript" src="https://www.canadahelps.org/secure/js/cdf_embed.2.js" charset="utf-8" data-language="en" data-page-id="149520" data-root-url="https://www.canadahelps.org" data-formtype="1" data-cfasync="false"></script>
+            <noscript>
+              <p class="m-form__fallback" style="display:block; padding:2rem 1.5rem;">The embedded form needs JavaScript. You can <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/149520">give directly on CanadaHelps</a> instead.</p>
+            </noscript>
+          </div>
+
+          <div class="m-form__footer">
+            <p class="m-form__secure">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Processed securely by <a target="_blank" rel="noopener" href="https://www.canadahelps.org/en/dn/149520">CanadaHelps</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="panelUS" role="tabpanel" aria-labelledby="tabUS" hidden>
+        <div class="m-form">
+          <div class="m-form__header">
+            <div class="m-form__header-content">
+              <p class="m-form__header-eyebrow">Secure Monthly Giving &middot; United States</p>
+              <h2 class="m-form__header-title">Give Monthly (Friends of ICS)</h2>
+              <p class="m-form__header-sub">U.S. tax receipts issued through Friends of ICS</p>
+            </div>
+          </div>
+
+          <div class="m-form__body">
+
+            <div class="m-error" id="ppError" role="alert" aria-live="polite"></div>
+
+            <div id="ppFormView">
+
+              <div class="m-field-group">
+                <span class="m-label" id="ppAmountLabel">Monthly Gift Amount (USD)</span>
+                <div class="m-amounts" role="group" aria-labelledby="ppAmountLabel">
+                  <button type="button" class="m-amount" data-amount="10" aria-pressed="false">$10</button>
+                  <button type="button" class="m-amount" data-amount="25" aria-pressed="true">$25</button>
+                  <button type="button" class="m-amount" data-amount="50" aria-pressed="false">$50</button>
+                  <button type="button" class="m-amount" data-amount="100" aria-pressed="false">$100</button>
+                  <button type="button" class="m-amount" data-amount="250" aria-pressed="false">$250</button>
+                  <button type="button" class="m-amount" data-amount="other" aria-pressed="false">Other</button>
+                </div>
+                <div class="m-other-wrap" id="ppOtherWrap" hidden>
+                  <span class="m-other-prefix" aria-hidden="true">$</span>
+                  <label class="sr-only" for="ppOther">Other monthly amount in whole US dollars</label>
+                  <input class="m-other" type="number" id="ppOther" inputmode="numeric" min="1" max="10000" step="1" placeholder="Whole dollars, e.g. 75">
+                </div>
+              </div>
+
+              <div class="m-field-group">
+                <span class="m-label">Your Details</span>
+                <div class="m-row" style="margin-bottom:0.7rem">
+                  <input class="m-input" type="text" id="ppFirst" placeholder="First name" autocomplete="given-name" aria-label="First name">
+                  <input class="m-input" type="text" id="ppLast" placeholder="Last name" autocomplete="family-name" aria-label="Last name">
+                </div>
+                <input class="m-input" type="email" id="ppEmail" placeholder="Email address" autocomplete="email" aria-label="Email address" style="margin-bottom:0.7rem">
+                <input class="m-input" type="text" id="ppAddress" placeholder="Street address" autocomplete="street-address" aria-label="Street address" style="margin-bottom:0.7rem">
+                <div class="m-row" style="margin-bottom:0.7rem">
+                  <input class="m-input" type="text" id="ppCity" placeholder="City" autocomplete="address-level2" aria-label="City">
+                  <input class="m-input" type="text" id="ppState" placeholder="State" autocomplete="address-level1" aria-label="State">
+                </div>
+                <input class="m-input" type="text" id="ppZip" placeholder="ZIP code" autocomplete="postal-code" aria-label="ZIP code">
+              </div>
+
+              <p class="m-total">Your monthly gift: <strong id="ppTotal">$25</strong> USD</p>
+
+              <div class="m-paypal" id="ppButtons">
+                <p class="m-paypal__loading" id="ppButtonsLoading">Loading secure payment options&hellip;</p>
+              </div>
+
+            </div>
+
+            <div class="m-confirm" id="ppConfirm" role="status" aria-live="polite">
+              <div class="m-confirm__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <p class="m-confirm__title">Thank you for sustaining ICS</p>
+              <p class="m-confirm__body">Your monthly gift is set up. PayPal will email you a confirmation, and Friends of ICS will be in touch about your U.S. tax receipt.</p>
+              <p class="m-confirm__ref" id="ppRef"></p>
+            </div>
+
+          </div>
+
+          <div class="m-form__footer">
+            <p class="m-form__secure">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Processed securely by <a target="_blank" rel="noopener" href="https://www.paypal.com">PayPal</a> for Friends of ICS
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- CONTACT BANNER -->
+<section class="contact-banner">
+  <div class="container">
+    <div class="contact-banner__content reveal">
+      <p class="contact-banner__eyebrow">Questions About Giving?</p>
+      <h2 class="contact-banner__title">For all donation-related inquiries, reach out to our team</h2>
+      <p class="contact-banner__body">We are happy to help you find the giving option that works best for you, whether it is a one-time gift, a recurring donation, or a legacy gift.</p>
+      <div class="contact-banner__details">
+        <div class="contact-banner__item">
+          <div class="contact-banner__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact-banner__label"><a href="mailto:donorrelations@icscanada.edu">donorrelations@icscanada.edu</a></span>
+        </div>
+        <div class="contact-banner__item">
+          <div class="contact-banner__icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="contact-banner__label"><strong>Matthew</strong> &middot; 416-979-2331 x223</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">Institute for Christian Studies</div>
+        <p class="footer__desc">Graduate education, research, and community service in the Reformational tradition since 1967. Forming the next generation of Christian scholars.</p>
+        <address class="footer__address">59 St. George Street<br>Toronto, Ontario M5S 2E6<br>Canada<br><br>1-416-979-2331<br><a href="mailto:info@icscanada.edu" style="color:var(--accent-light)">info@icscanada.edu</a></address>
+      </div>
+      <div>
+        <h4 class="footer__heading">Programs</h4>
+        <ul class="footer__links">
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/phd-program">PhD in Philosophy</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/master-of-arts-in-philosophy">MA in Philosophy</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/educational-leadership">MA(Phil) Ed. Leadership</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/master-of-worldview-studies">Master of Worldview Studies</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/academics/courses-and-syllabi">Courses &amp; Syllabi</a></li>
+          <li><a target="_blank" rel="noopener" href="https://f2bf.icscanada.edu">Free to be Faithful</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Admissions</h4>
+        <ul class="footer__links">
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions">Prospective Students</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/admission-requirements-modes-of-study">Requirements &amp; Modes</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/financial-aid">Financial Aid</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/tuition-fees">Tuition &amp; Fees</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/admissions/international-students">International Students</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__heading">Connect</h4>
+        <ul class="footer__links">
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/our-story">Our Story</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/mission-educational-creed">Mission &amp; Creed</a></li>
+          <li><a target="_blank" rel="noopener" href="https://faculty.icscanada.edu/">Faculty</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/research">Research (CPRSE)</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/events">Events</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/critical-faith-podcast">Critical Faith Podcast</a></li>
+          <li><a target="_blank" rel="noopener" href="https://perspective.icscanada.edu/">Perspective Newsletter</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/become-a-member">Become a Member</a></li>
+          <li><a target="_blank" rel="noopener" href="https://www.icscanada.edu/donate">Donate</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Institute for Christian Studies &middot; <a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/privacy-policy" style="color:inherit">Privacy</a> &middot; <a target="_blank" rel="noopener" href="https://www.icscanada.edu/about/accessibility-policy" style="color:inherit">Accessibility</a></span>
+      <div class="footer__social">
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/instituteforchristianstudies" aria-label="Facebook" title="Facebook">f</a>
+        <a target="_blank" rel="noopener" href="https://twitter.com/InsChr" aria-label="X" title="X / Twitter">&#x1D54F;</a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/instituteforchristianstudies/" aria-label="Instagram" title="Instagram">ig</a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/school/icscanada" aria-label="LinkedIn" title="LinkedIn">in</a>
+        <a target="_blank" rel="noopener" href="https://www.youtube.com/user/ChristianStudies" aria-label="YouTube" title="YouTube">&#x25B6;</a>
+        <a target="_blank" rel="noopener" href="https://instituteforchristianstudies.substack.com" aria-label="Substack" title="Substack" class="social-substack"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24l9.54-5.58L20.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- PayPal JS SDK — subscription mode -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAApSBMhJ7w0Jih91GiQ9iY9ErIpHIEVkDK1jNl6NGasMLE2S4te0xU4_QC_lwx-ihthz3dEPiAUDSiX00&vault=true&intent=subscription&currency=USD&components=buttons" data-sdk-integration-source="button-factory"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ================================================================
+     CONFIGURATION
+     ================================================================ */
+
+  /* PayPal billing plan: $1.00 USD/month, quantity-based.
+     The donor's monthly amount is sent as `quantity`, so a $25 gift
+     is quantity 25. Whole dollars only — see ppReadAmount(). */
+  var PAYPAL_PLAN_ID = 'P-5K795411MA3566342NKZL6RI';
+
+  /* Apps Script web app that records the gift. Deploy the internal
+     tracker as a web app (Execute as: me, Access: anyone) and paste
+     its /exec URL here. Until it is set, donations still complete —
+     they just are not recorded in the tracker in real time, and get
+     picked up from DonorPerfect later instead. */
+  var INTAKE_URL = 'https://script.google.com/macros/s/AKfycbypI2W-Z3lbrXCqm0OCXUyerNcrlX2ZL4m-8KkqNiUo_YAB2cTyoVYhZKFCstU7tUSdLA/exec';
+  /* Shared token the Apps Script checks before recording a gift. Run
+     generateIntakeToken() in the Apps Script editor and paste the result here.
+     This is not a secret — it is visible in this page's source. It only stops
+     casual scraping from writing junk rows into the tracker. */
+  var INTAKE_TOKEN = 'c9e1da82136a440f827bc5e6e58c1616796829b2';
+
+  /* ================================================================
+     SHARED PAGE BEHAVIOUR
+     ================================================================ */
+
+  /* Scroll reveal */
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function() { entry.target.classList.add('visible'); }, i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  /* CanadaHelps embedded form: loading state + fallback.
+     The embed is a cross-origin iframe injected by cdf_embed.2.js
+     next to the #ch_cdn_embed script tag inside #chEmbedMount. */
+  var chMount = document.getElementById('chEmbedMount');
+  var chLoading = document.getElementById('chLoading');
+  if (chMount && chLoading) {
+    var chDone = function() { chLoading.classList.add('hidden'); };
+    var chWatch = function(iframe) {
+      iframe.addEventListener('load', chDone);
+      setTimeout(chDone, 6000);
+    };
+    var chFrame = chMount.querySelector('iframe');
+    if (chFrame) {
+      chWatch(chFrame);
+    } else {
+      var chObserver = new MutationObserver(function() {
+        var f = chMount.querySelector('iframe');
+        if (f) { chObserver.disconnect(); chWatch(f); }
+      });
+      chObserver.observe(chMount, { childList: true, subtree: true });
+      setTimeout(function() {
+        if (!chMount.querySelector('iframe')) { chLoading.classList.add('stalled'); }
+      }, 8000);
+    }
+  }
+
+  /* ================================================================
+     PAYPAL MONTHLY FORM
+     ================================================================ */
+
+  var ppFormView = document.getElementById('ppFormView');
+  var ppConfirm  = document.getElementById('ppConfirm');
+  var ppError    = document.getElementById('ppError');
+  var ppOtherWrap= document.getElementById('ppOtherWrap');
+  var ppOther    = document.getElementById('ppOther');
+  var ppTotal    = document.getElementById('ppTotal');
+  var ppButtons  = document.getElementById('ppButtons');
+
+  var DONOR_FIELDS = ['ppFirst','ppLast','ppEmail','ppAddress','ppCity','ppState','ppZip'];
+
+  function val(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  /* Selected amount in whole USD, or 0 when invalid. */
+  function ppReadAmount() {
+    var pressed = document.querySelector('.m-amount[aria-pressed="true"]');
+    if (!pressed) return 0;
+    if (pressed.dataset.amount === 'other') {
+      var n = parseInt(ppOther.value, 10);
+      return (isFinite(n) && n >= 1 && n <= 10000) ? n : 0;
+    }
+    return parseInt(pressed.dataset.amount, 10) || 0;
+  }
+
+  function ppSyncTotal() {
+    var amt = ppReadAmount();
+    ppTotal.textContent = amt ? '$' + amt : '$0';
+  }
+
+  /* Amount picker */
+  Array.prototype.forEach.call(document.querySelectorAll('.m-amount'), function(btn) {
+    btn.addEventListener('click', function() {
+      Array.prototype.forEach.call(document.querySelectorAll('.m-amount'), function(b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      var isOther = btn.dataset.amount === 'other';
+      ppOtherWrap.hidden = !isOther;
+      if (isOther) { ppOther.focus(); } else { ppOther.classList.remove('is-invalid'); }
+      ppSyncTotal();
+    });
+  });
+  if (ppOther) { ppOther.addEventListener('input', ppSyncTotal); }
+
+  function ppShowError(msg) {
+    ppError.textContent = msg;
+    ppError.classList.add('is-active');
+    ppError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function ppValidate() {
+    var ok = true;
+    ppError.classList.remove('is-active');
+
+    DONOR_FIELDS.forEach(function(id) {
+      var el = document.getElementById(id);
+      el.classList.remove('is-invalid');
+      if (!el.value.trim()) { el.classList.add('is-invalid'); ok = false; }
+    });
+
+    var emailEl = document.getElementById('ppEmail');
+    if (emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+      emailEl.classList.add('is-invalid'); ok = false;
+    }
+
+    if (!ppReadAmount()) {
+      ppOther.classList.add('is-invalid');
+      ppShowError('Please choose a monthly amount in whole dollars (between $1 and $10,000).');
+      return false;
+    }
+
+    if (!ok) {
+      ppShowError('Please fill in all fields before continuing to PayPal.');
+    }
+    return ok;
+  }
+
+  /* Reference we can match against later, in case a donor's PayPal
+     email differs from the one they typed here. */
+  function ppMakeRef() {
+    return 'ICSMONTHLY-' + Date.now().toString(36).toUpperCase() +
+           '-' + Math.random().toString(36).slice(2, 7).toUpperCase();
+  }
+
+  /* Record the gift in the internal tracker.
+     Fire-and-forget: the donation has already succeeded at PayPal, so a
+     failure here must never block the donor's confirmation. DonorPerfect
+     is the backstop if this POST is lost.
+     NOTE: this endpoint records only. It must not send donor email —
+     donor acknowledgements are handled by a separate ICS system. */
+  function ppRecord(payload) {
+    if (!INTAKE_URL || INTAKE_URL.indexOf('PASTE_') === 0) {
+      return Promise.resolve();
+    }
+    return fetch(INTAKE_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(function() { /* swallowed on purpose */ });
+  }
+
+  function ppFinish(ref) {
+    ppFormView.style.display = 'none';
+    ppConfirm.classList.add('is-active');
+    document.getElementById('ppRef').textContent = 'Reference: ' + ref;
+    ppConfirm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  var ppRendered = false;
+
+  function renderPayPal() {
+    if (ppRendered || typeof paypal === 'undefined' || !ppButtons) { return; }
+    ppRendered = true;
+
+    var loading = document.getElementById('ppButtonsLoading');
+    if (loading) { loading.remove(); }
+
+    var pendingRef = null;
+
+    paypal.Buttons({
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'subscribe', height: 48 },
+
+      onClick: function(data, actions) {
+        return ppValidate() ? actions.resolve() : actions.reject();
+      },
+
+      createSubscription: function(data, actions) {
+        pendingRef = ppMakeRef();
+        return actions.subscription.create({
+          plan_id: PAYPAL_PLAN_ID,
+          quantity: String(ppReadAmount()),
+          custom_id: pendingRef,
+          subscriber: {
+            name: { given_name: val('ppFirst'), surname: val('ppLast') },
+            email_address: val('ppEmail'),
+            shipping_address: {
+              name: { full_name: val('ppFirst') + ' ' + val('ppLast') },
+              address: {
+                address_line_1: val('ppAddress'),
+                admin_area_2: val('ppCity'),
+                admin_area_1: val('ppState'),
+                postal_code: val('ppZip'),
+                country_code: 'US'
+              }
+            }
+          },
+          application_context: {
+            brand_name: 'Friends of ICS',
+            locale: 'en-US',
+            shipping_preference: 'NO_SHIPPING',
+            user_action: 'SUBSCRIBE_NOW',
+            payment_method: { payer_selected: 'PAYPAL', payee_preferred: 'IMMEDIATE_PAYMENT_REQUIRED' }
+          }
+        });
+      },
+
+      onApprove: function(data) {
+        var ref = pendingRef || ppMakeRef();
+        ppRecord({
+          token: INTAKE_TOKEN,
+          source: 'paypal',
+          ref: ref,
+          subscriptionId: data.subscriptionID || '',
+          amount: ppReadAmount(),
+          currency: 'USD',
+          frequency: 'monthly',
+          firstName: val('ppFirst'),
+          lastName: val('ppLast'),
+          email: val('ppEmail'),
+          address: val('ppAddress'),
+          city: val('ppCity'),
+          state: val('ppState'),
+          postal: val('ppZip'),
+          country: 'US',
+          timestamp: new Date().toISOString()
+        });
+        ppFinish(ref);
+      },
+
+      onError: function(err) {
+        ppShowError('Something went wrong setting up your monthly gift. Please try again, or email donorrelations@icscanada.edu and we will help.');
+        if (window.console) { console.error('PayPal error:', err); }
+      }
+
+    }).render('#ppButtons');
+  }
+
+  ppSyncTotal();
+
+  /* ================================================================
+     COUNTRY SWITCH
+     PayPal buttons are rendered on first reveal of the U.S. panel —
+     rendering into a hidden container gives PayPal a zero width and
+     the button comes out mis-sized.
+     ================================================================ */
+
+  var tabCA = document.getElementById('tabCA');
+  var tabUS = document.getElementById('tabUS');
+  var panelCA = document.getElementById('panelCA');
+  var panelUS = document.getElementById('panelUS');
+  var switchNote = document.getElementById('switchNote');
+
+  var NOTES = {
+    ca: 'Canadian donors receive an automatic CanadaHelps tax receipt.',
+    us: 'U.S. donors give through Friends of ICS and receive a U.S. tax receipt.'
+  };
+
+  function selectCountry(country, focusPanel) {
+    var isUS = country === 'us';
+
+    tabCA.setAttribute('aria-selected', String(!isUS));
+    tabUS.setAttribute('aria-selected', String(isUS));
+    panelCA.hidden = isUS;
+    panelUS.hidden = !isUS;
+    switchNote.textContent = isUS ? NOTES.us : NOTES.ca;
+
+    if (isUS) {
+      /* Wait a frame so the panel has real layout before PayPal measures it. */
+      requestAnimationFrame(function() { requestAnimationFrame(renderPayPal); });
+    }
+
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set('country', isUS ? 'us' : 'ca');
+      history.replaceState(null, '', url);
+    } catch (e) { /* older browsers: skip the URL update */ }
+
+    if (focusPanel) {
+      (isUS ? panelUS : panelCA).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  tabCA.addEventListener('click', function() { selectCountry('ca', true); });
+  tabUS.addEventListener('click', function() { selectCountry('us', true); });
+
+  /* Arrow-key navigation between tabs */
+  [tabCA, tabUS].forEach(function(tab) {
+    tab.addEventListener('keydown', function(e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') { return; }
+      e.preventDefault();
+      var next = (tab === tabCA) ? tabUS : tabCA;
+      next.focus();
+      selectCountry(next === tabUS ? 'us' : 'ca', false);
+    });
+  });
+
+  /* Deep link: /monthly/?country=us sends U.S. appeal traffic straight
+     to the PayPal form. */
+  var params = new URLSearchParams(window.location.search);
+  if ((params.get('country') || '').toLowerCase() === 'us') {
+    selectCountry('us', false);
+  }
+
+})();
+</script>
+</body>
+</html>

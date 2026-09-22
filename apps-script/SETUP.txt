@@ -1,0 +1,241 @@
+ICS MONTHLY CAMPAIGN TRACKER — SETUP
+================================================================================
+
+Two pieces:
+
+  monthly/index.html    public landing page, hosted on GitHub Pages
+  apps-script/          internal tracker, hosted on Google Apps Script
+
+Do these in order. Steps 1-5 take about fifteen minutes.
+
+
+--------------------------------------------------------------------------------
+1. CREATE THE SPREADSHEET AND SCRIPT
+--------------------------------------------------------------------------------
+
+  a. Create a new Google Sheet. Name it "ICS Monthly Campaign 2026".
+  b. Extensions > Apps Script.
+  c. Delete the placeholder Code.gs contents and paste in apps-script/Code.gs.
+  d. File > New > HTML file, name it exactly "Index" (no .html), and paste in
+     apps-script/Index.html.
+  e. Save.
+
+
+--------------------------------------------------------------------------------
+2. ADD THE DONORPERFECT KEY
+--------------------------------------------------------------------------------
+
+  Project Settings (gear icon) > Script Properties > Add script property:
+
+      Property:  DP_API_KEY
+      Value:     <your DonorPerfect API key, exactly as issued>
+
+  Paste the key exactly as DonorPerfect gives it, including any % characters —
+  it is already URL-encoded and the script does not re-encode it.
+
+  Use a key generated specifically for this app so it can be revoked on its own.
+  Ask DonorPerfect support whether they can issue it read-only; this tool only
+  ever runs SELECT queries.
+
+  The key must never appear in the landing page or anywhere else public. It
+  reaches the entire donor database.
+
+
+--------------------------------------------------------------------------------
+3. INITIALISE
+--------------------------------------------------------------------------------
+
+  In the Apps Script editor, run these two functions once each (choose them from
+  the dropdown, press Run, and approve the permission prompt the first time):
+
+      setUpSpreadsheet      creates the tabs and seeds Config
+      installDailyTrigger   schedules the DonorPerfect sync for ~6am daily
+      generateIntakeToken   creates the shared token the landing page sends
+
+  Tabs created: Mailing List, Conversions, PayPal Intake, Unmatched, Config.
+
+  generateIntakeToken prints a long random string in the execution log. Copy it
+  — it goes into the landing page in step 6. Only run it again if you want to
+  rotate: a new token invalidates the old one immediately, and the live page
+  stops recording until you paste the new value in and push.
+
+
+--------------------------------------------------------------------------------
+4. CHECK THE CONFIG TAB
+--------------------------------------------------------------------------------
+
+  DP_TY_LETTER_NO   8                            thank-you code = "New Monthly Donor"
+  DP_SOLICIT_CODE   (blank)                      optional second filter
+  CAMPAIGN_START    2026-09-29                   ignore gifts dated before this
+  CAMPAIGN_NAME     Monthly Conversion Appeal 2026
+
+  Thank-you code 8 had zero gifts against it when this was built, so every gift
+  carrying it is attributable to this appeal. That is why the code alone is
+  enough and DP_SOLICIT_CODE is left blank.
+
+  For a future campaign, change DP_TY_LETTER_NO and CAMPAIGN_START and re-import
+  a fresh mailing list. Nothing else needs to change.
+
+
+--------------------------------------------------------------------------------
+5. DEPLOY AS A WEB APP
+--------------------------------------------------------------------------------
+
+  Deploy > New deployment > type: Web app
+
+      Description:      ICS Monthly Tracker
+      Execute as:       Me
+      Who has access:   Anyone            <-- required, see below
+
+  Copy the /exec URL. It is both the internal tracker page and the endpoint the
+  landing page posts donations to.
+
+  "Anyone" is necessary because the public landing page has to POST to it from a
+  donor's browser with no Google login. The URL is a long unguessable string and
+  is the only thing protecting it, so treat it as a secret: do not put it in
+  anything public other than the landing page itself.
+
+  Note on updating: each time you edit the code you must Deploy > Manage
+  deployments > edit > New version, or the live URL keeps serving the old code.
+
+
+--------------------------------------------------------------------------------
+6. WIRE UP THE LANDING PAGE
+--------------------------------------------------------------------------------
+
+  In monthly/index.html (and monthly/stacked.html if you use that variant),
+  find this line near the top of the main <script> block:
+
+      var INTAKE_URL   = 'PASTE_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE';
+      var INTAKE_TOKEN = 'PASTE_INTAKE_TOKEN_HERE';
+
+  Set INTAKE_URL to the /exec URL from step 5, and INTAKE_TOKEN to the string
+  generateIntakeToken printed in step 3. Commit and push.
+
+  Until INTAKE_URL is set the page still works and donations still complete —
+  they just are not recorded in real time, and get picked up from DonorPerfect
+  later.
+
+  About the token: it is NOT a secret. It sits in the page source where anyone
+  can read it. Its only job is to stop casual scraping of the public repo or
+  page from writing junk rows into the tracker, which would wrongly suppress
+  real people from follow-ups. Someone determined can still post; the daily
+  DonorPerfect sync is what makes the data trustworthy either way.
+
+  If INTAKE_TOKEN in the page does not match the Script Property, gifts are
+  silently dropped from the tracker and a warning is written to the Apps Script
+  execution log. If the Script Property is not set at all, posts are accepted
+  unchecked and a warning is logged — so a half-finished setup records gifts
+  rather than losing them.
+
+
+--------------------------------------------------------------------------------
+7. IMPORT THE MAILING LIST
+--------------------------------------------------------------------------------
+
+  Open the /exec URL, scroll to "Import a mailing list", upload the CSV.
+
+  The file needs an email column. Accepted header names (case-insensitive):
+
+      email / email address / e-mail / donor email address
+      first name / first / fname / donor first name
+      last name / last / lname / donor last name
+
+  Re-importing the same file is safe. Existing people keep their status and
+  follow-up counts; only genuinely new emails are appended.
+
+
+--------------------------------------------------------------------------------
+DAY-TO-DAY USE
+--------------------------------------------------------------------------------
+
+  Before each follow-up send:
+
+    1. Open the /exec URL.
+    2. Click "Sync from DonorPerfect" to pull anything entered since yesterday.
+    3. If you have a fresh CanadaHelps export, upload it under
+       "CanadaHelps batch drop".
+    4. Click "Download CSV" to get the list of people still to contact.
+    5. Send from your email tool.
+    6. Come back and click "Mark send as done" so the tracker knows who has had
+       what.
+
+  This tool never emails donors. Acknowledgements come from the separate ICS
+  system; nothing here will produce a duplicate message.
+
+
+--------------------------------------------------------------------------------
+GETTING THE CANADAHELPS EXPORT
+--------------------------------------------------------------------------------
+
+  CanadaHelps charity account > Donations > Custom Data Download >
+  Add a CRM Report > select DonorPerfect > set the date range.
+
+  Make sure DONOR EMAIL ADDRESS is included — it is the only reliable match key.
+  Donors can withhold it; those rows go to the Unmatched tab for manual review
+  rather than being silently dropped.
+
+
+--------------------------------------------------------------------------------
+HOW SOMEONE GETS SUPPRESSED
+--------------------------------------------------------------------------------
+
+  PayPal        instantly, when the landing page posts the approved subscription
+  CanadaHelps   when you upload an export
+  DonorPerfect  within a day of the gift being entered, whatever the payment
+                method — this is what catches cheques
+
+  All three write to the Conversions tab and flip the person's status on the
+  Mailing List tab to "Converted". A conversion from someone not on the list is
+  still logged, flagged "Matched To List: No".
+
+  Matching is on email, lowercased and trimmed. There is no donor_id in the
+  exports, so a donor who gives under a different email will not match
+  automatically and will show up in Conversions with "Matched To List: No" —
+  worth scanning that column before each send.
+
+
+--------------------------------------------------------------------------------
+PAYPAL REFERENCE
+--------------------------------------------------------------------------------
+
+  Account       Friends of ICS (US), live
+  Product       PROD-0AP698105X599404P   "ICS Monthly Giving"
+  Plan          P-5K795411MA3566342NKZL6RI   "ICS Monthly Giving (USD)"
+
+  The plan is priced at $1.00 USD/month with quantity_supported. The donor's
+  chosen amount is sent as the subscription quantity, so a $25 gift is quantity
+  25. That is why the landing page restricts "Other" to whole dollars.
+
+  To retire the plan later:
+    POST https://api-m.paypal.com/v1/billing/plans/P-5K795411MA3566342NKZL6RI/deactivate
+
+  Existing subscriptions keep billing after a plan is deactivated; deactivating
+  only stops new ones being created against it.
+
+
+--------------------------------------------------------------------------------
+ROTATING PAYPAL CREDENTIALS
+--------------------------------------------------------------------------------
+
+  Rotating the SECRET only (same app, new secret generated in PayPal):
+
+      Nothing to change. The secret is not stored anywhere in this project. It
+      was used once, from a terminal, to create the product and plan above.
+      Generate the new one and carry on — the plan keeps working, because
+      products and plans belong to the merchant account, not to the credential.
+
+  Creating a NEW REST APP (new Client ID and secret):
+
+      The Client ID is public and is embedded in the landing page. Update it in
+      whichever variant you deployed:
+
+          monthly/index.html      the paypal.com/sdk/js <script> tag
+          monthly/stacked.html    same line
+
+      Replace the client-id= value, commit, push. The plan ID, the Apps Script
+      and the web app deployment are all unaffected.
+
+  The secret never belongs in the landing page, in Apps Script, or in this repo.
+  If you need it again — to create another plan, or to query subscriptions — use
+  it transiently from a terminal and do not save it to a file.

@@ -1,3 +1,12 @@
-monthly-copy/monthly-info.txt
+# Working material: drafts, scratch captures, and credential notes.
+# This directory is never published — it holds monthly-info.txt (which carries
+# API credentials) and a saved copy of a PayPal page containing session tokens.
+monthly-copy/
+
+# macOS metadata companions (AppleDouble) and Finder junk
+._*
+.DS_Store
+
+# Markdown drafts stay local; the README is the one exception.
 *.md
 !README.md
