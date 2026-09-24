@@ -10,3 +10,6 @@ monthly-copy/
 # Markdown drafts stay local; the README is the one exception.
 *.md
 !README.md
+
+# Internal asset index (Constant Contact image URLs); kept locally, never published
+*.xlsx
