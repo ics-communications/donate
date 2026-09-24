@@ -550,7 +550,7 @@ a { text-decoration: none; color: inherit; }
                 <span class="m-label" id="ppAmountLabel">Monthly Gift Amount (USD)</span>
                 <div class="m-amounts" role="group" aria-labelledby="ppAmountLabel">
                   <button type="button" class="m-amount" data-amount="10" aria-pressed="false">$10</button>
-                  <button type="button" class="m-amount" data-amount="25" aria-pressed="true">$25</button>
+                  <button type="button" class="m-amount" data-amount="30" aria-pressed="true">$30</button>
                   <button type="button" class="m-amount" data-amount="50" aria-pressed="false">$50</button>
                   <button type="button" class="m-amount" data-amount="100" aria-pressed="false">$100</button>
                   <button type="button" class="m-amount" data-amount="250" aria-pressed="false">$250</button>
@@ -578,7 +578,7 @@ a { text-decoration: none; color: inherit; }
                 <input class="m-input" type="text" id="ppZip" placeholder="ZIP code" autocomplete="postal-code" aria-label="ZIP code">
               </div>
 
-              <p class="m-total">Your monthly gift: <strong id="ppTotal">$25</strong> USD</p>
+              <p class="m-total">Your monthly gift: <strong id="ppTotal">$30</strong> USD</p>
 
               <div class="m-paypal" id="ppButtons">
                 <p class="m-paypal__loading" id="ppButtonsLoading">Loading secure payment options&hellip;</p>
@@ -707,8 +707,8 @@ a { text-decoration: none; color: inherit; }
      ================================================================ */
 
   /* PayPal billing plan: $1.00 USD/month, quantity-based.
-     The donor's monthly amount is sent as `quantity`, so a $25 gift
-     is quantity 25. Whole dollars only — see ppReadAmount(). */
+     The donor's monthly amount is sent as `quantity`, so a $30 gift
+     is quantity 30. Whole dollars only — see ppReadAmount(). */
   var PAYPAL_PLAN_ID = 'P-5K795411MA3566342NKZL6RI';
 
   /* Apps Script web app that records the gift. Deploy the internal
