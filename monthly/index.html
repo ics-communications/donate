@@ -250,6 +250,48 @@ a { text-decoration: none; color: inherit; }
 .m-impact__title { font-family: var(--sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-muted); margin-bottom: 0.7rem; }
 .m-impact__body { font-size: 0.92rem; color: var(--text-body); }
 
+/* President's word: full-bleed wine band, pull quote + click-to-play clip.
+   The quote carries the argument on its own; the clip authenticates it. */
+.m-word { position: relative; background: var(--wine-deep); padding: 5rem 0; overflow: hidden; }
+.m-word::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light) 40%, transparent 80%); }
+.m-word::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 15% 85%, rgba(168,90,50,0.10) 0%, transparent 55%), radial-gradient(ellipse at 85% 10%, rgba(168,90,50,0.06) 0%, transparent 50%); }
+.m-word__inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: center; max-width: 1080px; }
+.m-word__quote { margin: 0; }
+.m-word__mark { display: block; font-family: var(--serif); font-size: 3.4rem; line-height: 0.6; color: var(--accent-light); margin-bottom: 1.1rem; }
+.m-word__quote p { font-family: var(--serif); font-style: italic; font-size: clamp(1.25rem, 2.2vw, 1.65rem); line-height: 1.45; color: var(--cream); margin-bottom: 1.1rem; }
+.m-word__quote p + p { font-family: var(--sans); font-style: normal; font-size: 0.98rem; line-height: 1.7; font-weight: 300; color: var(--text-on-dark); }
+.m-word__cite { display: block; font-style: normal; margin-top: 1.6rem; padding-top: 1.3rem; border-top: 1px solid rgba(232,194,194,0.22); }
+.m-word__name { display: block; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; color: var(--cream); }
+.m-word__role { display: block; font-family: var(--sans); font-size: 0.82rem; font-weight: 300; color: var(--text-on-dark); margin-top: 0.15rem; }
+.m-word__media { min-width: 0; }
+.m-word__fallback { font-size: 0.78rem; color: var(--text-on-dark); margin-top: 0.85rem; }
+.m-word__fallback a { color: var(--cream); text-decoration: underline; text-underline-offset: 2px; }
+.m-word__fallback a:hover { color: var(--accent-light); }
+
+/* Video facade: poster + play button; iframe injected on click only */
+.video-facade { position: relative; aspect-ratio: 16 / 9; background: var(--wine-deep); border-top: 3px solid var(--accent); overflow: hidden; box-shadow: 0 18px 44px rgba(0,0,0,0.32); }
+.video-facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-facade__poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Control sits low-left so it never covers the speaker's face. */
+.video-facade__static { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; align-items: flex-end; justify-content: flex-start; gap: 0.85rem; padding: 1.3rem; border: 0; cursor: pointer; text-align: left; color: var(--cream); background: linear-gradient(to top, rgba(76,6,17,0.78) 0%, rgba(76,6,17,0.30) 42%, rgba(76,6,17,0.10) 100%); transition: background 0.35s var(--ease); }
+.video-facade__glyph { flex: none; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: var(--wine); transition: background 0.3s var(--ease), transform 0.3s var(--ease); }
+.video-facade__glyph svg { width: 18px; height: 18px; fill: var(--cream); margin-left: 3px; }
+.video-facade__label { padding-bottom: 0.45rem; font-family: var(--sans); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; line-height: 1.35; }
+.video-facade__static:hover, .video-facade__static:focus-visible { background: linear-gradient(to top, rgba(76,6,17,0.82) 0%, rgba(76,6,17,0.38) 50%, rgba(76,6,17,0.14) 100%); }
+.video-facade__static:hover .video-facade__glyph, .video-facade__static:focus-visible .video-facade__glyph { background: var(--accent); transform: scale(1.07); }
+.video-facade__static:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .m-word { padding: 3.5rem 0; }
+  .m-word__inner { grid-template-columns: 1fr; gap: 2.2rem; }
+  /* Stacked: hold the measure and keep the clip from swallowing the band. */
+  .m-word__quote, .m-word__media { max-width: 560px; }
+}
+@media (hover: none) {
+  .video-facade__static:hover .video-facade__glyph { background: rgba(122,10,28,0.85); transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .video-facade__glyph { transition: none; } }
+
 /* Give section shell */
 .m-give { padding: 4.5rem 0 5rem; }
 .m-give__head { text-align: center; max-width: 720px; margin: 0 auto 2.5rem; }
@@ -397,6 +439,34 @@ a { text-decoration: none; color: inherit; }
         <p class="m-impact__body">Recurring gifts provide the stability ICS needs to strengthen student support, expand public learning, and maintain the people and infrastructure that make this community possible.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PRESIDENT'S WORD -->
+<section class="m-word">
+  <div class="container m-word__inner">
+
+    <blockquote class="m-word__quote reveal">
+      <span class="m-word__mark" aria-hidden="true">&ldquo;</span>
+      <p>It&rsquo;s a really critical time to invest in Christian higher education.</p>
+      <p>All across the majority world, theological schools are closing. That&rsquo;s happening in the United Kingdom, that&rsquo;s happening in the United States, and it&rsquo;s happened here in Canada. That&rsquo;s a really short-sighted trend.</p>
+      <cite class="m-word__cite">
+        <span class="m-word__name">Beth Green</span>
+        <span class="m-word__role">President, Institute for Christian Studies</span>
+      </cite>
+    </blockquote>
+
+    <div class="m-word__media reveal">
+      <div class="video-facade" data-video-id="_eOTKdhCOKY" data-video-title="ICS President Beth Green on the critical importance of ICS today">
+        <img class="video-facade__poster" src="https://i.ytimg.com/vi/_eOTKdhCOKY/maxresdefault.jpg" srcset="https://i.ytimg.com/vi/_eOTKdhCOKY/mqdefault.jpg 320w, https://i.ytimg.com/vi/_eOTKdhCOKY/maxresdefault.jpg 1280w" sizes="(max-width: 900px) 92vw, 500px" alt="" width="1280" height="720" loading="lazy" decoding="async">
+        <a class="video-facade__static" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_eOTKdhCOKY" aria-label="Play: ICS President Beth Green on the critical importance of ICS today">
+          <span class="video-facade__glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></span>
+          <span class="video-facade__label" aria-hidden="true">Hear it from<br>the president</span>
+        </a>
+      </div>
+      <p class="m-word__fallback">Or watch it <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=_eOTKdhCOKY">on YouTube</a>.</p>
+    </div>
+
   </div>
 </section>
 
@@ -669,6 +739,33 @@ a { text-decoration: none; color: inherit; }
   }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
   reveals.forEach(function(el) { observer.observe(el); });
 
+  /* Click-to-play video facades. Any .video-facade with a data-video-id gets
+     a privacy-enhanced YouTube embed injected on first click; without JS the
+     static anchor inside falls through to YouTube. */
+  var facades = document.querySelectorAll('.video-facade[data-video-id]');
+  Array.prototype.forEach.call(facades, function(facade) {
+    var id = facade.getAttribute('data-video-id');
+    var title = facade.getAttribute('data-video-title') || 'Video';
+    var link = facade.querySelector('.video-facade__static');
+    if (!link) { return; }
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = link.className;
+    btn.innerHTML = link.innerHTML;
+    btn.setAttribute('aria-label', 'Play: ' + title);
+    btn.addEventListener('click', function() {
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.title = title;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+      iframe.focus();
+    });
+    link.parentNode.replaceChild(btn, link);
+  });
+
   /* CanadaHelps embedded form: loading state + fallback.
      The embed is a cross-origin iframe injected by cdf_embed.2.js
      next to the #ch_cdn_embed script tag inside #chEmbedMount. */
@@ -908,7 +1005,17 @@ a { text-decoration: none; color: inherit; }
     us: 'U.S. donors give through Friends of ICS and receive a U.S. tax receipt.'
   };
 
-  function selectCountry(country, focusPanel) {
+  /* Set once a donor picks a side themselves, so a slow IP lookup landing
+     afterwards never yanks the form out from under them. */
+  var countryChosenByDonor = false;
+
+  /**
+   * opts.byDonor  this came from a click, a keypress, or an appeal link —
+   *               remember it, reflect it in the URL, and lock out detection
+   * opts.scroll   bring the panel into view
+   */
+  function selectCountry(country, opts) {
+    opts = opts || {};
     var isUS = country === 'us';
 
     tabCA.setAttribute('aria-selected', String(!isUS));
@@ -922,19 +1029,23 @@ a { text-decoration: none; color: inherit; }
       requestAnimationFrame(function() { requestAnimationFrame(renderPayPal); });
     }
 
-    try {
-      var url = new URL(window.location.href);
-      url.searchParams.set('country', isUS ? 'us' : 'ca');
-      history.replaceState(null, '', url);
-    } catch (e) { /* older browsers: skip the URL update */ }
+    if (opts.byDonor) {
+      countryChosenByDonor = true;
+      rememberChoice(country);
+      try {
+        var url = new URL(window.location.href);
+        url.searchParams.set('country', isUS ? 'us' : 'ca');
+        history.replaceState(null, '', url);
+      } catch (e) { /* older browsers: skip the URL update */ }
+    }
 
-    if (focusPanel) {
+    if (opts.scroll) {
       (isUS ? panelUS : panelCA).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
 
-  tabCA.addEventListener('click', function() { selectCountry('ca', true); });
-  tabUS.addEventListener('click', function() { selectCountry('us', true); });
+  tabCA.addEventListener('click', function() { selectCountry('ca', { byDonor: true, scroll: true }); });
+  tabUS.addEventListener('click', function() { selectCountry('us', { byDonor: true, scroll: true }); });
 
   /* Arrow-key navigation between tabs */
   [tabCA, tabUS].forEach(function(tab) {
@@ -943,18 +1054,157 @@ a { text-decoration: none; color: inherit; }
       e.preventDefault();
       var next = (tab === tabCA) ? tabUS : tabCA;
       next.focus();
-      selectCountry(next === tabUS ? 'us' : 'ca', false);
+      selectCountry(next === tabUS ? 'us' : 'ca', { byDonor: true });
     });
   });
 
-  /* Deep link: /monthly/?country=us sends U.S. appeal traffic straight
-     to the PayPal form. */
-  var params = new URLSearchParams(window.location.search);
-  if ((params.get('country') || '').toLowerCase() === 'us') {
-    selectCountry('us', false);
+  /* ================================================================
+     COUNTRY DETECTION
+
+     Priority, highest first:
+
+       1. ?country=us|ca in the URL        — explicit, from an appeal link
+       2. A choice this visitor made before — remembered in localStorage
+       3. The browser's IANA time zone      — decisive for almost everyone
+          in North America, costs nothing, and reveals nothing to anyone
+       4. navigator.language                — weak tiebreaker
+       5. An IP lookup                      — only when 3 and 4 say nothing
+
+     The IP lookup is last on purpose. It is a request to a third party
+     carrying the donor's address, and it arrives too late to set the
+     first paint, so using it as the primary signal would mean showing
+     one form and swapping it under the donor a moment later. Time zone
+     gets it right synchronously for the overwhelming majority; the
+     lookup only rescues visitors whose zone we do not recognise.
+
+     None of this is authoritative — it reports where the device is, not
+     where the donor files taxes. A Canadian in Florida gets the U.S.
+     form. That is why the switch stays visible and a deliberate choice
+     always wins and is remembered.
+     ================================================================ */
+
+  var STORAGE_KEY = 'ics-monthly-country';
+
+  var CA_ZONES = {
+    'America/Toronto':1, 'America/Vancouver':1, 'America/Edmonton':1,
+    'America/Winnipeg':1, 'America/Halifax':1, 'America/St_Johns':1,
+    'America/Regina':1, 'America/Moncton':1, 'America/Whitehorse':1,
+    'America/Yellowknife':1, 'America/Iqaluit':1, 'America/Glace_Bay':1,
+    'America/Goose_Bay':1, 'America/Rankin_Inlet':1, 'America/Resolute':1,
+    'America/Cambridge_Bay':1, 'America/Inuvik':1, 'America/Dawson':1,
+    'America/Dawson_Creek':1, 'America/Fort_Nelson':1, 'America/Creston':1,
+    'America/Atikokan':1, 'America/Blanc-Sablon':1, 'America/Nipigon':1,
+    'America/Thunder_Bay':1, 'America/Rainy_River':1, 'America/Swift_Current':1,
+    'America/Pangnirtung':1, 'America/Coral_Harbour':1, 'America/Montreal':1,
+    'Canada/Atlantic':1, 'Canada/Central':1, 'Canada/Eastern':1,
+    'Canada/Mountain':1, 'Canada/Newfoundland':1, 'Canada/Pacific':1,
+    'Canada/Saskatchewan':1, 'Canada/Yukon':1
+  };
+
+  var US_ZONES = {
+    'America/New_York':1, 'America/Chicago':1, 'America/Denver':1,
+    'America/Los_Angeles':1, 'America/Phoenix':1, 'America/Anchorage':1,
+    'America/Adak':1, 'America/Juneau':1, 'America/Sitka':1,
+    'America/Metlakatla':1, 'America/Yakutat':1, 'America/Nome':1,
+    'America/Boise':1, 'America/Detroit':1, 'America/Menominee':1,
+    'America/Puerto_Rico':1, 'Pacific/Honolulu':1, 'America/Honolulu':1
+  };
+
+  /* Prefixes that are unambiguously U.S. but have many sub-zones. */
+  var US_PREFIXES = ['America/Indiana/', 'America/North_Dakota/',
+                     'America/Kentucky/', 'US/'];
+
+  function savedChoice() {
+    try {
+      var v = window.localStorage.getItem(STORAGE_KEY);
+      return (v === 'ca' || v === 'us') ? v : null;
+    } catch (e) { return null; }   /* private mode, blocked storage */
   }
 
+  function rememberChoice(country) {
+    try { window.localStorage.setItem(STORAGE_KEY, country); } catch (e) {}
+  }
+
+  function countryFromTimeZone() {
+    var tz;
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; }
+    catch (e) { return null; }
+    if (!tz) { return null; }
+
+    if (CA_ZONES[tz]) { return 'ca'; }
+    if (US_ZONES[tz]) { return 'us'; }
+    for (var i = 0; i < US_PREFIXES.length; i++) {
+      if (tz.indexOf(US_PREFIXES[i]) === 0) { return 'us'; }
+    }
+    return null;
+  }
+
+  function countryFromLanguage() {
+    var l = String(navigator.language || '').toLowerCase();
+    if (l === 'en-ca' || l === 'fr-ca') { return 'ca'; }
+    if (l === 'en-us') { return 'us'; }
+    return null;
+  }
+
+  /* Cloudflare's trace endpoint: no API key, no rate limit, CORS open,
+     and it returns a bare country code. Fails quietly and quickly. */
+  function countryFromIp(callback) {
+    if (typeof fetch !== 'function') { return callback(null); }
+
+    var settled = false;
+    var finish = function(v) { if (!settled) { settled = true; callback(v); } };
+    var timer = setTimeout(function() { finish(null); }, 2000);
+
+    fetch('https://www.cloudflare.com/cdn-cgi/trace', { cache: 'no-store' })
+      .then(function(r) { return r.ok ? r.text() : null; })
+      .then(function(text) {
+        clearTimeout(timer);
+        var m = text && /(?:^|\n)loc=([A-Z]{2})/.exec(text);
+        var loc = m ? m[1] : null;
+        finish(loc === 'CA' ? 'ca' : (loc === 'US' ? 'us' : null));
+      })
+      .catch(function() { clearTimeout(timer); finish(null); });
+  }
+
+  /* ---- Pick the opening tab ------------------------------------- */
+
+  (function chooseOpeningCountry() {
+    var params = new URLSearchParams(window.location.search);
+    var fromUrl = (params.get('country') || '').toLowerCase();
+
+    /* 1. Explicit link, e.g. /monthly/?country=us in the U.S. appeal email */
+    if (fromUrl === 'us' || fromUrl === 'ca') {
+      selectCountry(fromUrl, { byDonor: true });
+      return;
+    }
+
+    /* 2. What they chose last time */
+    var saved = savedChoice();
+    if (saved) {
+      selectCountry(saved, { byDonor: true });
+      return;
+    }
+
+    /* 3. Time zone — synchronous, so the right form is there on first paint */
+    var byZone = countryFromTimeZone();
+    if (byZone) {
+      selectCountry(byZone, {});
+      return;
+    }
+
+    /* 4 + 5. Nothing decisive. Fall back to language if it says anything,
+       then ask Cloudflare where the request came from. The page already
+       shows the Canadian form, so this only ever corrects it to U.S. */
+    var byLang = countryFromLanguage();
+    if (byLang) { selectCountry(byLang, {}); }
+
+    countryFromIp(function(byIp) {
+      if (byIp && !countryChosenByDonor) { selectCountry(byIp, {}); }
+    });
+  })();
+
 })();
+
 </script>
 </body>
 </html>
